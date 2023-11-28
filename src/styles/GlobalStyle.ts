@@ -9,14 +9,17 @@ const GlobalStyle = createGlobalStyle`
 
   body,
   h1, h2 {
-   margin: 0;
-      background: ${({ theme }) => theme.colors.degraded};
-
+       margin: 0;
   }
 
   html {
     font-family:  ${({ theme }) => theme.typography.mainFontFamily};
     color: ${({ theme }) => theme.colors.main};
+     background: linear-gradient(
+      to right,
+      ${({ theme }) => theme.colors.degraded}
+    );
+  
   }
 
   p {
