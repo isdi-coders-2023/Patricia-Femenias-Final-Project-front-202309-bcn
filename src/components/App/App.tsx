@@ -1,5 +1,5 @@
 import AppStyled from "./AppStyled";
-import Header from "./Header/Header";
+import Header from "../Header/Header";
 
 const App = (): React.ReactElement => {
   return (
