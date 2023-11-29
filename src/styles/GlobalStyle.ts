@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   p {
-    margin: 0;
+  margin: 0;
   }
 
   ul, li  {
