@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Header from "./Header";
 import mainTheme from "../../styles/mainTheme";
@@ -9,9 +10,12 @@ describe("Given a Header component", () => {
       const expectedAltText = "My 90s Furby collection logo";
 
       render(
-        <ThemeProvider theme={mainTheme}>
-          <Header />
-        </ThemeProvider>,
+        <BrowserRouter>
+          <ThemeProvider theme={mainTheme}>
+            <Header />
+          </ThemeProvider>
+          ,
+        </BrowserRouter>,
       );
 
       const headerLogo = screen.getByAltText(expectedAltText);
