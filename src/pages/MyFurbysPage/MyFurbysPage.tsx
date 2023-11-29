@@ -1,8 +1,10 @@
+import MyFurbyPageStyled from "./MyFurbysPageStyled";
+
 const MyFurbysPage = (): React.ReactElement => {
   return (
-    <section>
-      <h2>My Furby collection</h2>
-    </section>
+    <MyFurbyPageStyled>
+      <h2 className="page-title">My Furby collection</h2>
+    </MyFurbyPageStyled>
   );
 };
 
