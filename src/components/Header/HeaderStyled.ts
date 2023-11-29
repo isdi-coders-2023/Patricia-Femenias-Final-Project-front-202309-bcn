@@ -10,8 +10,8 @@ const HeaderStyled = styled.header`
   .header-logo {
     object-fit: cover;
     margin-bottom: 20px;
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
     padding-top: 20px;
   }
 `;
