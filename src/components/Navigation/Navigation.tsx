@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
+import NavigationStyled from "./NavigationStyled";
 
 const Navigation = (): React.ReactElement => {
   return (
-    <nav>
+    <NavigationStyled>
       <ul className="navigation">
         <li>
           <NavLink to="/my-furbys">My Furbys</NavLink>
@@ -11,7 +12,7 @@ const Navigation = (): React.ReactElement => {
           <NavLink to="/new-one">New one</NavLink>
         </li>
       </ul>
-    </nav>
+    </NavigationStyled>
   );
 };
 
