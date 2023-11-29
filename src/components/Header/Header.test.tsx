@@ -14,7 +14,6 @@ describe("Given a Header component", () => {
           <ThemeProvider theme={mainTheme}>
             <Header />
           </ThemeProvider>
-          ,
         </BrowserRouter>,
       );
 

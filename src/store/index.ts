@@ -1,7 +1,8 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { furbysReducer } from "./features/furbys/furbysSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { furbysState: furbysReducer },
 });
 
 export type AppDispatch = typeof store.dispatch;
