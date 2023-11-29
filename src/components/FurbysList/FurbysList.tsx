@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../store/hooks";
-import FurbysListStyled from "./FurbyListStyled";
+import FurbysListStyled from "./FurbysListStyled";
 
 const FurbysList = (): React.ReactElement => {
   const furbysState = useAppSelector((state) => state.furbysState);
