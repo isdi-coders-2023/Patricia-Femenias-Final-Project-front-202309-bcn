@@ -37,7 +37,7 @@ const FurbyCardStyled = styled.article`
       display: flex;
       flex-direction: column;
       gap: 5px;
-      padding-left: 30px;
+      padding-left: 6px;
       padding-bottom: 30px;
     }
 
@@ -53,6 +53,11 @@ const FurbyCardStyled = styled.article`
     &__image {
       object-fit: cover;
       border-radius: 15px 15px 0 0;
+    }
+
+    &__button-container {
+      display: flex;
+      flex-direction: column;
     }
 
     @media (max-width: 360px) {

@@ -4,6 +4,7 @@ const NavigationStyled = styled.nav`
   .navigation {
     display: flex;
     justify-content: center;
+    width: 300px;
     gap: 30px;
     font-size: 16px;
     color: ${({ theme }) => theme.colors.main};

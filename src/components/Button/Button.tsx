@@ -1,9 +1,11 @@
+import ButtonStyled from "./ButtonStyled";
+
 interface ButtonProps {
   text: string;
 }
 
 const Button = ({ text }: ButtonProps): React.ReactElement => {
-  return <button>{text}</button>;
+  return <ButtonStyled>{text}</ButtonStyled>;
 };
 
 export default Button;
