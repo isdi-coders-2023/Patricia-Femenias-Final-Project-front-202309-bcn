@@ -23,8 +23,7 @@ const furbysApiMock: FurbyStructure[] = [
     price: 84,
     howFoundIt:
       "I bought this I stumbled upon the adorable Furby Gizmo while exploring a quirky vintage store in downtown London. Its bright colors and playful demeanor instantly caught my eye, and I couldn't resist bringing this delightful companion home with me. through Vinted and it arrived very clean and in perfect condition.",
-    imageUrl:
-      "https://i.ibb.co/0FrzcXK/https://i.ibb.co/ThY8Mdp/gizmo.webp.webp",
+    imageUrl: "https://i.ibb.co/ThY8Mdp/gizmo.webp.webp",
   },
 ];
 
