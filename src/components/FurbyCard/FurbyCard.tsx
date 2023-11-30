@@ -1,4 +1,5 @@
 import { FurbyStructure } from "../../store/features/furbys/types";
+import Button from "../Button/Button";
 import FurbyCardStyled from "./FurbyCardStyled";
 
 interface FurbyCardProps {
@@ -33,6 +34,10 @@ const FurbyCard = ({
             <dd className="furby-card__info">{price}</dd>
           </div>
         </dl>
+        <div className="furby-card__button-container">
+          <Button text={"Modify"} />
+          <Button text={"Delete"} />
+        </div>
       </div>
     </FurbyCardStyled>
   );
