@@ -19,34 +19,42 @@ const GlobalStyle = createGlobalStyle`
       to right,
       ${({ theme }) => theme.colors.degraded}
     );
-  
   }
 
   p {
-  margin: 0;
+    margin: 0;
   }
 
   ul, li  {
-   list-style: none;
-   margin: 0;
-   padding-left: 0;
+    list-style: none;
+     margin: 0;
+    padding-left: 0;
   }
 
   a {
-   text-decoration: none;
-   color: inherit;
+     text-decoration: none;
+    color: inherit;
   }     
 
   button {
-   border: none;
-   background-color: inherit;
-   font: inherit;
-   cursor: pointer;  
+    border: none;
+    background-color: inherit;
+    font: inherit;
+    cursor: pointer;  
   }
 
   input, textarea {
     font: inherit;
     border: none
+  }
+  
+  dl, dt, dd {
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    max-width: 100%;
   }
 `;
 
