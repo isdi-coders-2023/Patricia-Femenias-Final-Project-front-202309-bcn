@@ -6,7 +6,9 @@ const useFurbysApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
   const getFurbysApi = useCallback(async () => {
-    const { data: furbys } = await axios.get<FurbyStructure[]>("/furbys");
+    const { data: furbys } = await axios.get<{ furbys: FurbyStructure[] }>(
+      "/furbys",
+    );
     return furbys;
   }, []);
 
