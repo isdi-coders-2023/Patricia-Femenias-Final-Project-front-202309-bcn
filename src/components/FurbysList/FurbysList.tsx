@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../store/hooks";
+import FurbyCard from "../FurbyCard/FurbyCard";
 import FurbysListStyled from "./FurbysListStyled";
 
 const FurbysList = (): React.ReactElement => {
@@ -7,7 +8,9 @@ const FurbysList = (): React.ReactElement => {
   return (
     <FurbysListStyled>
       {furbysState.furbys.map((furby) => (
-        <li key={furby._id}>{furby.name}</li>
+        <li key={furby._id}>
+          <FurbyCard furby={furby} />
+        </li>
       ))}
     </FurbysListStyled>
   );

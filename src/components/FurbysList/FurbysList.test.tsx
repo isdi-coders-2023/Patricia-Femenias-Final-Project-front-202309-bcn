@@ -1,18 +1,35 @@
 import { screen } from "@testing-library/react";
-import furbysApiMock from "../../mocks/furbysApiMock";
 import customRender from "../../testsUtils/customRender";
 import FurbysList from "./FurbysList";
+import furbysApiMock from "../../mocks/furbysApiMock";
 
 describe("Given a FurbysList component", () => {
-  describe("When it is called with a list of Furbys", () => {
-    test("Then it should show the name of Peachy at the first position", () => {
-      const expectedFirstName = furbysApiMock[0].name;
+  describe("When it is called with a list of two Furbys", () => {
+    test("Then it should show two Furbys", () => {
+      const expectedNumberOfFurbys = 2;
 
       customRender(<FurbysList />);
+      const furbysList = screen.getAllByRole("heading").length;
 
-      const name = screen.getByText(expectedFirstName);
+      expect(furbysList).toBe(expectedNumberOfFurbys);
+    });
 
-      expect(name).toBeInTheDocument();
+    test("Then it should at the first position, one Furby with his name 'Peachy' into a heading", () => {
+      const expectedName = "Peachy";
+
+      customRender(<FurbysList />);
+      const title = screen.getByRole("heading", { name: expectedName });
+
+      expect(title).toBeInTheDocument();
+    });
+
+    test("Then it should at the first position, the picture of Peachy Furby", () => {
+      const expectedAltText = furbysApiMock[0].name;
+
+      customRender(<FurbysList />);
+      const image = screen.getByAltText(expectedAltText);
+
+      expect(image).toBeInTheDocument();
     });
   });
 });
