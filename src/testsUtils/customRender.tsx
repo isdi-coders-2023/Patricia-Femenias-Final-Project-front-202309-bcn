@@ -6,6 +6,7 @@ import furbysApiMock from "../mocks/furbysApiMock";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/mainTheme";
+import GlobalStyle from "../styles/GlobalStyle";
 
 const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
@@ -16,6 +17,7 @@ const customRender = (children: React.ReactElement) => {
   render(
     <BrowserRouter>
       <ThemeProvider theme={mainTheme}>
+        <GlobalStyle />
         <Provider store={mockStore}>{children}</Provider>
       </ThemeProvider>
     </BrowserRouter>,

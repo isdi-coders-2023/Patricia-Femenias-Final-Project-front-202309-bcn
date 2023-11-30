@@ -3,10 +3,11 @@ import styled from "styled-components";
 const MyFurbyPageStyled = styled.main`
   .page-title {
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 800;
     font-size: 20px;
     margin-top: 30px;
     margin-bottom: 20px;
+    text-align: center;
   }
 `;
 export default MyFurbyPageStyled;
