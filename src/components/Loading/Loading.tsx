@@ -9,7 +9,7 @@ const Loading = (): React.ReactElement => {
           <div className="circle22"></div>
         </div>
         <div className="loading__text">
-          <span aria-label="loading">Loading...</span>
+          <span>Loading...</span>
         </div>
       </div>
     </LoadingStyled>
