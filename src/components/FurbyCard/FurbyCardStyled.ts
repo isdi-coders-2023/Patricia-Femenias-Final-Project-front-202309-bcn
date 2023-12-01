@@ -11,7 +11,6 @@ const FurbyCardStyled = styled.article`
     #e7f962 14%,
     #ff81d2 84%
   );
-
   border-radius: 15px;
   display: flex;
   flex-direction: column;

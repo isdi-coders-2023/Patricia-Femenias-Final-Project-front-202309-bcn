@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../testsUtils/customRender";
+import { customRender } from "../../testsUtils/customRender";
 import Button from "./Button";
 
 describe("Given a Button component", () => {

@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import Navigation from "./Navigation";
-import customRender from "../../testsUtils/customRender";
+import { customRender } from "../../testsUtils/customRender";
 
 describe("Given a Navigation component", () => {
   describe("When it is rendered", () => {

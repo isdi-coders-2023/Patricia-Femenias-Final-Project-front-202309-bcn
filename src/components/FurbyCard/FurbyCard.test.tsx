@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import furbyApiMock from "../../mocks/FurbyApiMock";
-import customRender from "../../testsUtils/customRender";
+import { customRender } from "../../testsUtils/customRender";
 import FurbyCard from "./FurbyCard";
 
 describe("Given a FurbyCard component", () => {
