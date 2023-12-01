@@ -1,10 +1,18 @@
+import LoadingStyled from "./LoadingStyled";
+
 const Loading = (): React.ReactElement => {
   return (
-    <div>
-      <div>
-        <span>Loading...</span>
+    <LoadingStyled>
+      <div className="loading">
+        <div className="rhombus2">
+          <div className="circle21"></div>
+          <div className="circle22"></div>
+        </div>
+        <div className="loading__text">
+          <span aria-label="loading">Loading...</span>
+        </div>
       </div>
-    </div>
+    </LoadingStyled>
   );
 };
 
