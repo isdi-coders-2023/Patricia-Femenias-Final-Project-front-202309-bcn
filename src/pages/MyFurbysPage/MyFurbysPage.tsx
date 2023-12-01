@@ -12,6 +12,7 @@ const MyFurbysPage = (): React.ReactElement => {
   useEffect(() => {
     (async () => {
       const furbys = await getFurbysApi();
+
       dispatch(loadFurbysActionCreator(furbys.furbys));
     })();
   }, [dispatch, getFurbysApi]);
