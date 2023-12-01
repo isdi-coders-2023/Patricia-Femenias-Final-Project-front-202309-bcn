@@ -7,11 +7,16 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/mainTheme";
 import GlobalStyle from "../styles/GlobalStyle";
+import { PropsWithChildren } from "react";
+import { uiReducer } from "../store/features/ui/uiSlice";
 
-const customRender = (children: React.ReactElement) => {
+export const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
-    reducer: { furbysState: furbysReducer },
-    preloadedState: { furbysState: { furbys: furbysApiMock } },
+    reducer: { furbysState: furbysReducer, uiState: uiReducer },
+    preloadedState: {
+      furbysState: { furbys: furbysApiMock },
+      uiState: { isLoading: false },
+    },
   });
 
   render(
@@ -24,4 +29,11 @@ const customRender = (children: React.ReactElement) => {
   );
 };
 
-export default customRender;
+export const providerWrapper = ({ children }: PropsWithChildren) => {
+  const mockStore = configureStore({
+    reducer: { furbysState: furbysReducer },
+    preloadedState: { furbysState: { furbys: furbysApiMock } },
+  });
+
+  return <Provider store={mockStore}>{children}</Provider>;
+};

@@ -1,6 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import furbysApiMock from "../mocks/furbysApiMock";
 import useFurbysApi from "./useFurbysApi";
+import { providerWrapper } from "../testsUtils/customRender";
 
 describe("Given a useFurbysApi custom hook", () => {
   describe("When it gets the information of two Furbys", () => {
@@ -11,7 +12,7 @@ describe("Given a useFurbysApi custom hook", () => {
         result: {
           current: { getFurbysApi },
         },
-      } = renderHook(() => useFurbysApi());
+      } = renderHook(() => useFurbysApi(), { wrapper: providerWrapper });
 
       const currentFurbys = await getFurbysApi();
 

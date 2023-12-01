@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import MyFurbysPage from "./MyFurbysPage";
-import customRender from "../../testsUtils/customRender";
+import { customRender } from "../../testsUtils/customRender";
 
 describe("Given the MyFurbysPage component", () => {
   describe("When it is rendered", () => {
