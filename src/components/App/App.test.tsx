@@ -18,6 +18,28 @@ describe("Given an App component", () => {
 
       expect(headerLogo).toBeInTheDocument();
     });
+
+    test("Then it should show a navigationbar with the link wirh the text'My Furbys'", () => {
+      const expectedMyFurbysLink = "My Furbys";
+
+      customRender(<App />);
+      const myFurbysLink = screen.getByRole("link", {
+        name: expectedMyFurbysLink,
+      });
+
+      expect(myFurbysLink).toBeInTheDocument();
+    });
+
+    test("Then it should show a navigationbar with the link wirh the text'My Furbys'", () => {
+      const expectedMyFurbysLink = "My Furbys";
+
+      customRender(<App />);
+      const myFurbysLink = screen.getByRole("link", {
+        name: expectedMyFurbysLink,
+      });
+
+      expect(myFurbysLink).toBeInTheDocument();
+    });
   });
 
   describe("When it receives a path to /my-furbys and it renders MyFurbys page", () => {
