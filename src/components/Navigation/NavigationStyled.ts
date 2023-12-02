@@ -6,7 +6,7 @@ const NavigationStyled = styled.nav`
     justify-content: center;
     width: 300px;
     gap: 30px;
-    font-size: 16px;
+    font-size: 1rem;
     color: ${({ theme }) => theme.colors.main};
     background: linear-gradient(
       to top left,

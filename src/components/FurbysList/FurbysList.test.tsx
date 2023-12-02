@@ -14,7 +14,7 @@ describe("Given a FurbysList component", () => {
       expect(furbysList).toBe(expectedNumberOfFurbys);
     });
 
-    test("Then it should at the first position, one Furby with his name 'Peachy' into a heading", () => {
+    test("Then it should show at the first position, one Furby with his name 'Peachy' into a heading", () => {
       const expectedName = "Peachy";
 
       customRender(<FurbysList />);
@@ -23,7 +23,7 @@ describe("Given a FurbysList component", () => {
       expect(title).toBeInTheDocument();
     });
 
-    test("Then it should at the first position, the picture of Peachy Furby", () => {
+    test("Then it should show at the first position, the picture of Peachy Furby", () => {
       const expectedAltText = furbysApiMock[0].name;
 
       customRender(<FurbysList />);
