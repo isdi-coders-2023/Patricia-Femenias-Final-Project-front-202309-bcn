@@ -9,6 +9,7 @@ import mainTheme from "../styles/mainTheme";
 import GlobalStyle from "../styles/GlobalStyle";
 import { PropsWithChildren } from "react";
 import { uiReducer } from "../store/features/ui/uiSlice";
+import { store } from "../store";
 
 export const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
@@ -30,12 +31,7 @@ export const customRender = (children: React.ReactElement) => {
 };
 
 export const providerWrapper = ({ children }: PropsWithChildren) => {
-  const mockStore = configureStore({
-    reducer: { furbysState: furbysReducer },
-    preloadedState: { furbysState: { furbys: furbysApiMock } },
-  });
-
-  return <Provider store={mockStore}>{children}</Provider>;
+  return <Provider store={store}>{children}</Provider>;
 };
 
 export const customRenderWithoutRouter = (children: React.ReactElement) => {
@@ -48,9 +44,9 @@ export const customRenderWithoutRouter = (children: React.ReactElement) => {
   });
 
   render(
-      <ThemeProvider theme={mainTheme}>
-        <GlobalStyle />
-        <Provider store={mockStore}>{children}</Provider>
-      </ThemeProvider>
+    <ThemeProvider theme={mainTheme}>
+      <GlobalStyle />
+      <Provider store={mockStore}>{children}</Provider>
+    </ThemeProvider>,
   );
 };
