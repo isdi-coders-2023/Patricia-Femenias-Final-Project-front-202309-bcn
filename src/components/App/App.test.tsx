@@ -82,4 +82,19 @@ describe("Given an App component", () => {
       expect(name).toBeInTheDocument();
     });
   });
+
+  describe("When it receives a path to /not-found-page and it renders the Not Found page", () => {
+    test("Then it should show Not Found image", () => {
+      const expectedAltText = "Error 404: page not found";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/not-found-page"]}>
+          <App />
+        </MemoryRouter>,
+      );
+      const pageNotFoundImage = screen.getByAltText(expectedAltText);
+
+      expect(pageNotFoundImage).toBeInTheDocument();
+    });
+  });
 });
