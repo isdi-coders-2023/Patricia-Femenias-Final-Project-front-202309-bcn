@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ButtonStyled = styled.button`
   background-color: ${({ theme }) => theme.colors.accent};
-  //font-family: ${({ theme }) => theme.typography.mainFont};
+  font-family: ${({ theme }) => theme.typography.mainFont};
   color: ${({ theme }) => theme.colors.main};
   font-weight: bold;
   border-radius: 14px;
@@ -10,7 +10,7 @@ const ButtonStyled = styled.button`
   margin-bottom: 20px;
   width: 250px;
   height: 40px;
-  font-size: 16px;
+  font-size: 1rem;
   text-transform: uppercase;
   justify-content: center;
 `;

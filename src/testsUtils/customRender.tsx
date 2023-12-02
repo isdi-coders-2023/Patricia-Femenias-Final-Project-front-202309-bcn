@@ -37,3 +37,20 @@ export const providerWrapper = ({ children }: PropsWithChildren) => {
 
   return <Provider store={mockStore}>{children}</Provider>;
 };
+
+export const customRenderWithoutRouter = (children: React.ReactElement) => {
+  const mockStore = configureStore({
+    reducer: { furbysState: furbysReducer, uiState: uiReducer },
+    preloadedState: {
+      furbysState: { furbys: furbysApiMock },
+      uiState: { isLoading: false },
+    },
+  });
+
+  render(
+      <ThemeProvider theme={mainTheme}>
+        <GlobalStyle />
+        <Provider store={mockStore}>{children}</Provider>
+      </ThemeProvider>
+  );
+};

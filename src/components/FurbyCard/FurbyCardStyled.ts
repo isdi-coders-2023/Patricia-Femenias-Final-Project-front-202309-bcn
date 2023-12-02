@@ -17,7 +17,7 @@ const FurbyCardStyled = styled.article`
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 25px ${({ theme }) => theme.colors.main};
-  font-size: 16px;
+  font-size: 1rem;
 
   .furby-card {
     flex-direction: column;
@@ -28,7 +28,7 @@ const FurbyCardStyled = styled.article`
     &__name {
       text-transform: uppercase;
       margin: 20px;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
     }
 
