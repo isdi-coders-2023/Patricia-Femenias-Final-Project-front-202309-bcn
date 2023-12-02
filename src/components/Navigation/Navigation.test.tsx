@@ -9,11 +9,11 @@ describe("Given a Navigation component", () => {
 
       customRender(<Navigation />);
 
-      const MyFurbysLink = screen.getByRole("link", {
+      const myFurbysLink = screen.getByRole("link", {
         name: expectedMyFurbysLink,
       });
 
-      expect(MyFurbysLink).toBeInTheDocument();
+      expect(myFurbysLink).toBeInTheDocument();
     });
   });
 
