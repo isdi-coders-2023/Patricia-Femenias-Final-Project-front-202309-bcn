@@ -7,7 +7,7 @@ describe("Given a Button component", () => {
     test("Test it should show the text 'Modify'", () => {
       const text = "Modify";
 
-      customRender(<Button text={"Modify"} />);
+      customRender(<Button text="Modify" />);
       const button = screen.getByRole("button", { name: text });
 
       expect(button).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe("Given a Button component", () => {
     test("Test it should show the text 'Delete'", () => {
       const text = "Delete";
 
-      customRender(<Button text={"Delete"} />);
+      customRender(<Button text="Delete" />);
       const button = screen.getByRole("button", { name: text });
 
       expect(button).toBeInTheDocument();
