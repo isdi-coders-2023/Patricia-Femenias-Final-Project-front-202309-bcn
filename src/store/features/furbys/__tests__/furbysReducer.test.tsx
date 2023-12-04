@@ -1,6 +1,6 @@
-import furbysApiMock from "../../../mocks/furbysApiMock";
-import { furbysReducer, loadFurbysActionCreator } from "./furbysSlice";
-import { FurbyStateStructure } from "./types";
+import furbysApiMock from "../../../../mocks/furbysApiMock";
+import { furbysReducer, loadFurbysActionCreator } from "../furbysSlice";
+import { FurbyStateStructure } from "../types";
 
 describe("Given a furbysReducer", () => {
   describe("When it receives an empty list of Furbys", () => {

@@ -18,12 +18,12 @@ const uiSlice = createSlice({
       ...currentUiState,
       isLoading: false,
     }),
-    showError: (currentState) => ({
-      ...currentState,
+    showError: (currentUiState) => ({
+      ...currentUiState,
       isError: true,
     }),
-    hideError: (currentState) => ({
-      ...currentState,
+    hideError: (currentUiState) => ({
+      ...currentUiState,
       isError: false,
     }),
   },
