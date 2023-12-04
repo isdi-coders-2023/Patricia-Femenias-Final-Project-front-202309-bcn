@@ -24,7 +24,20 @@ const useFurbysApi = () => {
     return furbys;
   }, [dispatch]);
 
-  return { getFurbysApi };
+  const deleteFurby = useCallback(
+    async (apiUrl: string, id: string): Promise<void> => {
+      dispatch(showLoadingActionCreator());
+
+      const { data } = await axios.delete(`${apiUrl}/furbys/${id}`);
+
+      dispatch(hideLoadingActionCreator());
+
+      return data;
+    },
+    [dispatch],
+  );
+
+  return { getFurbysApi, deleteFurby };
 };
 
 export default useFurbysApi;
