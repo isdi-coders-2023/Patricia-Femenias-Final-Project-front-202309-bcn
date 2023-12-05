@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import Header from "./Header";
-import { customRender } from "../../testsUtils/customRender";
+import { customRender } from "../../testsUtils/wrappers";
 
 describe("Given a Header component", () => {
   describe("When it is rendered", () => {

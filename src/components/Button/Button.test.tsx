@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
-import { customRender } from "../../testsUtils/customRender";
+import { customRender } from "../../testsUtils/wrappers";
 import Button from "./Button";
+import userEvent from "@testing-library/user-event";
 
 describe("Given a Button component", () => {
   describe("When it receives the text 'Modify'", () => {
@@ -22,6 +23,23 @@ describe("Given a Button component", () => {
       const button = screen.getByRole("button", { name: text });
 
       expect(button).toBeInTheDocument();
+    });
+  });
+
+  describe("When it receives the action 'delete' and a click", () => {
+    test("it should call the received action", async () => {
+      const expectedButtonText = "Delete";
+      const expectedAction = vi.fn();
+
+      customRender(
+        <Button text={expectedButtonText} actionOnClick={expectedAction} />,
+      );
+
+      const button = screen.getByRole("button", { name: expectedButtonText });
+
+      await userEvent.click(button);
+
+      expect(expectedAction).toHaveBeenCalledOnce();
     });
   });
 });

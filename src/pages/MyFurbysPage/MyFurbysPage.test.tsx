@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import MyFurbysPage from "./MyFurbysPage";
-import { customRender } from "../../testsUtils/customRender";
+import { customRender } from "../../testsUtils/wrappers";
 import furbysApiMock from "../../mocks/furbysApiMock";
 
 describe("Given the MyFurbysPage component", () => {
