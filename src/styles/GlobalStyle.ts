@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
    box-sizing: border-box;
   }
 
+:root {
+   --toastify-icon-color-success: #fff
+}
+
   body,
   h1, h2 {
        margin: 0;
