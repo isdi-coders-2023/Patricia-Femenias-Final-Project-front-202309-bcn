@@ -1,4 +1,7 @@
+import useFurbysApi from "../../hooks/useFurbysApi";
+import { deleteFurbyActionCreator } from "../../store/features/furbys/furbysSlice";
 import { FurbyStructure } from "../../store/features/furbys/types";
+import { useAppDispatch } from "../../store/hooks";
 import Button from "../Button/Button";
 import FurbyCardStyled from "./FurbyCardStyled";
 
@@ -7,8 +10,16 @@ interface FurbyCardProps {
 }
 
 const FurbyCard = ({
-  furby: { imageUrl, name, type, year, price },
+  furby: { imageUrl, name, type, year, price, _id },
 }: FurbyCardProps): React.ReactElement => {
+  const dispatch = useAppDispatch();
+  const { deleteFurby } = useFurbysApi();
+
+  const deleteFurbyApi = (id: string): void => {
+    deleteFurby(id);
+    dispatch(deleteFurbyActionCreator(id));
+  };
+
   return (
     <FurbyCardStyled>
       <img
@@ -35,8 +46,13 @@ const FurbyCard = ({
           </div>
         </dl>
         <div className="furby-card__button-container">
-          <Button text={"Modify"} />
-          <Button text={"Delete"} />
+          <Button text="Modify" />
+          <Button
+            actionOnClick={() => {
+              deleteFurbyApi(_id);
+            }}
+            text="Delete"
+          />
         </div>
       </div>
     </FurbyCardStyled>
