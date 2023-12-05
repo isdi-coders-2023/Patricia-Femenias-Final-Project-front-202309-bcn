@@ -94,6 +94,15 @@ const LoadingStyled = styled.div`
       margin-left: 30px;
     }
   }
+
+  @media (prefers-reduced-motion) {
+    .loading,
+    .rhombus2,
+    .circle21,
+    .circle22 {
+      display: none;
+    }
+  }
 `;
 
 export default LoadingStyled;
