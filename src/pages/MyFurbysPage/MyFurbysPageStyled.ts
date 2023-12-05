@@ -8,6 +8,7 @@ const MyFurbyPageStyled = styled.main`
     margin-top: 30px;
     margin-bottom: 20px;
     text-align: center;
+    padding: 5px;
   }
 `;
 export default MyFurbyPageStyled;

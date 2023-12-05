@@ -20,14 +20,14 @@ const FurbyCardStyled = styled.article`
   font-size: 1rem;
 
   .furby-card {
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    color: ${({ theme }) => theme.colors.main};
+    &__name-container {
+      display: flex;
+      align-items: center;
+    }
 
     &__name {
       text-transform: uppercase;
-      margin: 20px;
+      margin: 20px 5px;
       font-size: 1.25rem;
       font-weight: bold;
     }
