@@ -6,6 +6,7 @@ import {
   showLoadingActionCreator,
 } from "../store/features/ui/uiSlice";
 import { useAppDispatch } from "../store/hooks";
+import { toast } from "react-toastify";
 
 const useFurbysApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
@@ -26,13 +27,25 @@ const useFurbysApi = () => {
 
   const deleteFurby = useCallback(
     async (id: string): Promise<void> => {
-      dispatch(showLoadingActionCreator());
+      try {
+        dispatch(showLoadingActionCreator());
 
-      const { data } = await axios.delete(`/furbys/${id}`);
+        const { data } = await axios.delete(`/furbys/${id}`);
 
-      dispatch(hideLoadingActionCreator());
+        toast.success("Great! your Furby has been deleted!", {
+          style: { backgroundColor: "#055B2DCC", color: "#fff" },
+        });
 
-      return data;
+        dispatch(hideLoadingActionCreator());
+
+        return data;
+      } catch {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("Sorry, we couldn't delete your Furby!", {
+          style: { backgroundColor: "#C52323", color: "#fff" },
+        });
+      }
     },
     [dispatch],
   );
