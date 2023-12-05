@@ -3,6 +3,8 @@ import furbyApiMock from "../../mocks/FurbyApiMock";
 import { customRender } from "../../testsUtils/wrappers";
 import FurbyCard from "./FurbyCard";
 import userEvent from "@testing-library/user-event";
+import { errorHandlers } from "../../mocks/errorHandlers";
+import server from "../../mocks/node";
 
 describe("Given a FurbyCard component", () => {
   describe("When it receives Peachy's data", () => {
@@ -48,9 +50,9 @@ describe("Given a FurbyCard component", () => {
   });
 
   describe("When the card with the Furby Peachy is rendered and the user clicks on the button 'Delete'", () => {
-    test("The it should remove the card", async () => {
-      const expectedButtonText = "Delete";
+    const expectedButtonText = "Delete";
 
+    test("The it should remove the card", async () => {
       customRender(<FurbyCard furby={furbyApiMock} />);
 
       const deleteButton = screen.getByRole("button", {
@@ -62,6 +64,38 @@ describe("Given a FurbyCard component", () => {
 
       waitFor(() => {
         expect(furbyName).not.toBeInTheDocument();
+      });
+    });
+
+    test("Then it should show the positive feedback message 'Great! your Furby has been deleted!'", async () => {
+      const expectedMessage = "Great! your Furby has been deleted!";
+
+      customRender(<FurbyCard furby={furbyApiMock} />);
+
+      const deleteButton = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
+
+      await userEvent.click(deleteButton);
+
+      expect(screen.getByText(expectedMessage)).toBeInTheDocument();
+    });
+
+    test("Then it should show the positive feedback message 'Sorry, we coudnt delete your Furby!'", async () => {
+      const expectedErrorMessage = "Sorry, we couldn't delete your Furby!";
+
+      server.use(...errorHandlers);
+
+      customRender(<FurbyCard furby={furbyApiMock} />);
+
+      const deleteButton = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
+
+      await userEvent.click(deleteButton);
+
+      await waitFor(() => {
+        expect(screen.getByText(expectedErrorMessage)).toBeInTheDocument();
       });
     });
   });
