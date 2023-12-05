@@ -3,7 +3,7 @@ import App from "./App";
 import {
   customRender,
   customRenderWithoutRouter,
-} from "../../testsUtils/customRender";
+} from "../../testsUtils/wrappers";
 import { MemoryRouter } from "react-router-dom";
 import furbysApiMock from "../../mocks/furbysApiMock";
 

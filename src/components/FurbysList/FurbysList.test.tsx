@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { customRender } from "../../testsUtils/customRender";
+import { customRender } from "../../testsUtils/wrappers";
 import FurbysList from "./FurbysList";
 import furbysApiMock from "../../mocks/furbysApiMock";
 

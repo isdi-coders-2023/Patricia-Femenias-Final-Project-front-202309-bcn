@@ -1,4 +1,4 @@
-import { customRender } from "../../testsUtils/customRender";
+import { customRender } from "../../testsUtils/wrappers";
 import { screen } from "@testing-library/react";
 import Loading from "./Loading";
 
