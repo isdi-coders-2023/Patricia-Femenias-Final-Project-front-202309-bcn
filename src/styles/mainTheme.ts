@@ -4,6 +4,7 @@ const mainTheme: DefaultTheme = {
   colors: {
     main: "#292f72",
     accent: "#fc90c4",
+    light: "#fff",
     degraded: "#62ffab, #e7f962, #ff81d2",
   },
   typography: {
