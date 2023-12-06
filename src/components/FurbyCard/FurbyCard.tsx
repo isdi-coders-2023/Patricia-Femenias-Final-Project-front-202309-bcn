@@ -15,9 +15,9 @@ const FurbyCard = ({
   const dispatch = useAppDispatch();
   const { deleteFurby } = useFurbysApi();
 
-  const deleteFurbyApi = (id: string): void => {
-    deleteFurby(id);
-    dispatch(deleteFurbyActionCreator(id));
+  const deleteFurbyApi = (): void => {
+    deleteFurby(_id);
+    dispatch(deleteFurbyActionCreator(_id));
   };
 
   return (
@@ -50,12 +50,7 @@ const FurbyCard = ({
       </dl>
       <div className="furby-card__button-container">
         <Button text="Modify" />
-        <Button
-          actionOnClick={() => {
-            deleteFurbyApi(_id);
-          }}
-          text="Delete"
-        />
+        <Button actionOnClick={deleteFurbyApi} text="Delete" />
       </div>
     </FurbyCardStyled>
   );
