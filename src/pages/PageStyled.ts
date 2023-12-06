@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MyFurbyPageStyled = styled.main`
+const PageStyled = styled.main`
   .page-title {
     text-transform: uppercase;
     font-weight: 800;
@@ -11,4 +11,4 @@ const MyFurbyPageStyled = styled.main`
     padding: 5px;
   }
 `;
-export default MyFurbyPageStyled;
+export default PageStyled;

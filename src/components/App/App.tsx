@@ -7,6 +7,7 @@ import Loading from "../Loading/Loading";
 import { useAppSelector } from "../../store/hooks";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import ToastStyled from "../Toast/ToastStyled";
+import CreatePage from "../../pages/CreatePage/CreatePage";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -20,6 +21,7 @@ const App = (): React.ReactElement => {
         <Route path="/" element={<Navigate to="/my-furbys" />} />
         <Route path="my-furbys" element={<MyFurbysPage />} />
         <Route path="/*" element={<NotFoundPage />} />
+        <Route path="/create" element={<CreatePage />} />
       </Routes>
     </AppStyled>
   );
