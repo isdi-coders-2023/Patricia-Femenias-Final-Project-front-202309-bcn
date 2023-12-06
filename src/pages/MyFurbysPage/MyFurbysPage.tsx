@@ -4,6 +4,8 @@ import MyFurbyPageStyled from "./MyFurbysPageStyled";
 import { loadFurbysActionCreator } from "../../store/features/furbys/furbysSlice";
 import FurbysList from "../../components/FurbysList/FurbysList";
 import useFurbysApi from "../../hooks/useFurbysApi";
+import { hideLoadingActionCreator } from "../../store/features/ui/uiSlice";
+import { toast } from "react-toastify";
 
 const MyFurbysPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -11,9 +13,17 @@ const MyFurbysPage = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
-      const furbys = await getFurbysApi();
+      try {
+        const furbys = await getFurbysApi();
 
-      dispatch(loadFurbysActionCreator(furbys.furbys));
+        dispatch(loadFurbysActionCreator(furbys.furbys));
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("Sorry! We cant found Furbys!", {
+          style: { backgroundColor: "#C52323", color: "#fff" },
+        });
+      }
     })();
   }, [dispatch, getFurbysApi]);
 
