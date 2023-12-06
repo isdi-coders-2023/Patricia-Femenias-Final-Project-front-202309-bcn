@@ -14,15 +14,21 @@ const useFurbysApi = () => {
   const dispatch = useAppDispatch();
 
   const getFurbysApi = useCallback(async () => {
-    dispatch(showLoadingActionCreator());
+    try {
+      dispatch(showLoadingActionCreator());
 
-    const { data: furbys } = await axios.get<{ furbys: FurbyStructure[] }>(
-      "/furbys",
-    );
+      const { data: furbys } = await axios.get<{ furbys: FurbyStructure[] }>(
+        "/furbys",
+      );
 
-    dispatch(hideLoadingActionCreator());
+      dispatch(hideLoadingActionCreator());
 
-    return furbys;
+      return furbys;
+    } catch (error) {
+      dispatch(hideLoadingActionCreator);
+
+      throw new Error((error as Error).message);
+    }
   }, [dispatch]);
 
   const deleteFurby = useCallback(
