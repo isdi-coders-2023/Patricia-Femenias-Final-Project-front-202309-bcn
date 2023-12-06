@@ -1,7 +1,9 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import MyFurbysPage from "./MyFurbysPage";
 import { customRender } from "../../testsUtils/wrappers";
 import furbysApiMock from "../../mocks/furbysApiMock";
+import { errorHandlers } from "../../mocks/errorHandlers";
+import server from "../../mocks/node";
 
 describe("Given the MyFurbysPage component", () => {
   describe("When it is rendered", () => {
@@ -31,6 +33,19 @@ describe("Given the MyFurbysPage component", () => {
       const image = screen.getByAltText(expectedAltText);
 
       expect(image).toBeInTheDocument();
+    });
+  });
+
+  describe("When it is rendered but the list of Furbys doesnt appear", () => {
+    test("Then it show the error message 'Sorry! We cant found Furbys!'", async () => {
+      const expectedErrorMessage = "Sorry! We cant found Furbys!";
+
+      server.use(...errorHandlers);
+      customRender(<MyFurbysPage />);
+
+      await waitFor(() => {
+        expect(screen.getByText(expectedErrorMessage)).toBeInTheDocument();
+      });
     });
   });
 });

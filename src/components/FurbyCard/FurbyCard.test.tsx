@@ -52,7 +52,7 @@ describe("Given a FurbyCard component", () => {
   describe("When the card with the Furby Peachy is rendered and the user clicks on the button 'Delete'", () => {
     const expectedButtonText = "Delete";
 
-    test("The it should remove the card", async () => {
+    test("Then it should remove the card", async () => {
       customRender(<FurbyCard furby={furbyApiMock} />);
 
       const deleteButton = screen.getByRole("button", {
@@ -78,7 +78,9 @@ describe("Given a FurbyCard component", () => {
 
       await userEvent.click(deleteButton);
 
-      expect(screen.getByText(expectedMessage)).toBeInTheDocument();
+      const message = screen.getByText(expectedMessage);
+
+      expect(message).toBeInTheDocument();
     });
 
     test("Then it should show the positive feedback message 'Sorry, we coudnt delete your Furby!'", async () => {
@@ -94,8 +96,10 @@ describe("Given a FurbyCard component", () => {
 
       await userEvent.click(deleteButton);
 
+      const message = screen.getByText(expectedErrorMessage);
+
       await waitFor(() => {
-        expect(screen.getByText(expectedErrorMessage)).toBeInTheDocument();
+        expect(message).toBeInTheDocument();
       });
     });
   });
