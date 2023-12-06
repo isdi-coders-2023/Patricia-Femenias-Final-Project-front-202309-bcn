@@ -13,5 +13,24 @@ describe("Given the CreatePage component", () => {
 
       expect(heading).toBeInTheDocument();
     });
+
+    test("Then it should show a form", () => {
+      const expectedLabelText = "Name:";
+
+      customRender(<CreatePage />);
+
+      const labelText = screen.getByLabelText(expectedLabelText);
+
+      expect(labelText).toBeInTheDocument();
+    });
+
+    test("Then it should show a button with the text 'Create'", () => {
+      const expectedButtonText = "Create";
+
+      customRender(<CreatePage />);
+      const buttonText = screen.getByText(expectedButtonText);
+
+      expect(buttonText).toBeInTheDocument();
+    });
   });
 });
