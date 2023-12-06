@@ -1,8 +1,10 @@
+import PageStyled from "../PageStyled";
+
 const CreatePage = (): React.ReactElement => {
   return (
-    <main>
-      <h2>Add a new furby</h2>
-    </main>
+    <PageStyled>
+      <h2 className="page-title">Add a new Furby</h2>
+    </PageStyled>
   );
 };
 
