@@ -8,11 +8,18 @@ const ButtonStyled = styled.button`
   border-radius: 14px;
   padding: 8px 16px;
   margin-bottom: 20px;
-  width: 250px;
+  width: 275px;
   height: 40px;
   font-size: 1rem;
   text-transform: uppercase;
   justify-content: center;
+  align-self: center;
+
+  &.button {
+    &__form {
+      width: 265px;
+    }
+  }
 `;
 
 export default ButtonStyled;

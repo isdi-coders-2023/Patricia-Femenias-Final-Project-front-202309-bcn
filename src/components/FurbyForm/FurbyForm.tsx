@@ -1,6 +1,9 @@
+import Button from "../Button/Button";
+import FurbyFormStyled from "./FurbyFormStyled";
+
 const FurbyForm = (): React.ReactElement => {
   return (
-    <form className="form" autoComplete="off">
+    <FurbyFormStyled className="form" autoComplete="off">
       <div className="form__row">
         <label className="form__label" htmlFor="name">
           Name:
@@ -49,12 +52,8 @@ const FurbyForm = (): React.ReactElement => {
         </label>
         <input className="form__input" type="url" id="picture" required />
       </div>
-      <div className="form__button--box">
-        <button className="form__button" type="submit">
-          Create
-        </button>
-      </div>
-    </form>
+      <Button className="button__form" text="Create" />
+    </FurbyFormStyled>
   );
 };
 
