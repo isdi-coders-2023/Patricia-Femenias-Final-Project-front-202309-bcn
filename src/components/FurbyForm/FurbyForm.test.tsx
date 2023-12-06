@@ -1,33 +1,25 @@
 import { screen } from "@testing-library/react";
-import CreatePage from "./CreatePage";
 import { customRender } from "../../testsUtils/wrappers";
+import FurbyForm from "./FurbyForm";
 
-describe("Given the CreatePage component", () => {
+describe("Given a FurbyForm component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show a heading with the title 'Add a new Furby'", () => {
-      const expectedTitle = "Add a new Furby";
-
-      customRender(<CreatePage />);
-
-      const heading = screen.getByRole("heading", { name: expectedTitle });
-
-      expect(heading).toBeInTheDocument();
-    });
-
-    test("Then it should show a form", () => {
+    test("Then it should show a'Name:' label text", () => {
       const expectedLabelText = "Name:";
 
-      customRender(<CreatePage />);
+      customRender(<FurbyForm />);
 
       const labelText = screen.getByLabelText(expectedLabelText);
 
       expect(labelText).toBeInTheDocument();
     });
+  });
 
+  describe("when it is rendered", () => {
     test("Then it should show a button with the text 'Create'", () => {
       const expectedButtonText = "Create";
 
-      customRender(<CreatePage />);
+      customRender(<FurbyForm />);
       const buttonText = screen.getByText(expectedButtonText);
 
       expect(buttonText).toBeInTheDocument();
