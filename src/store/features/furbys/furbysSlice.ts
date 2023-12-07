@@ -26,6 +26,14 @@ const furbysSlice = createSlice({
         (furby) => furby._id !== action.payload,
       ),
     }),
+
+    addNewFurby: (
+      currentState,
+      action: PayloadAction<FurbyStructure>,
+    ): FurbyStateStructure => ({
+      ...currentState,
+      furbys: [...currentState.furbys, action.payload],
+    }),
   },
 });
 
@@ -34,4 +42,5 @@ export const furbysReducer = furbysSlice.reducer;
 export const {
   loadFurbys: loadFurbysActionCreator,
   deleteFurby: deleteFurbyActionCreator,
+  addNewFurby: addNewFurbyActionCreator,
 } = furbysSlice.actions;
