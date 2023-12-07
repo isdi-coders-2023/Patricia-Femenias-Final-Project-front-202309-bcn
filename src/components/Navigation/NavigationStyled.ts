@@ -14,7 +14,6 @@ const NavigationStyled = styled.nav`
     );
     text-transform: uppercase;
     padding: 20px;
-    margin: 20px;
     box-shadow: 0px 0px 10px 5px ${({ theme }) => theme.colors.main};
     border-radius: 5px;
   }
