@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const FurbyCardStyled = styled.article`
   text-align: center;
-  margin: 20px;
   margin-top: 20px;
   width: 300px;
   background: linear-gradient(
