@@ -1,15 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-*,
- ::before,
- ::after {
-   box-sizing: border-box;
-  }
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    }
 
-:root {
-   --toastify-icon-color-success: #fff
-}
+  :root {
+    --toastify-icon-color-success: #fff
+  }
 
   body,
   h1, h2 {

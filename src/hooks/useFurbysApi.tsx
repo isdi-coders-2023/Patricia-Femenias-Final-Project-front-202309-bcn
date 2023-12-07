@@ -39,7 +39,7 @@ const useFurbysApi = () => {
         const { data } = await axios.delete(`/furbys/${id}`);
 
         toast.success("Great! your Furby has been deleted!", {
-          style: { backgroundColor: "#055B2DCC", color: "#fff" },
+          className: "toast toast--success",
         });
 
         dispatch(hideLoadingActionCreator());
@@ -49,7 +49,7 @@ const useFurbysApi = () => {
         dispatch(hideLoadingActionCreator());
 
         toast.error("Sorry, we couldn't delete your Furby!", {
-          style: { backgroundColor: "#C52323", color: "#fff" },
+          className: "toast toast--error",
         });
       }
     },

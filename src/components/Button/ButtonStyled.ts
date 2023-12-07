@@ -9,7 +9,7 @@ const ButtonStyled = styled.button`
   padding: 8px 16px;
   margin-bottom: 20px;
   width: 275px;
-  height: 40px;
+  height: 48px;
   font-size: 1rem;
   text-transform: uppercase;
   justify-content: center;
