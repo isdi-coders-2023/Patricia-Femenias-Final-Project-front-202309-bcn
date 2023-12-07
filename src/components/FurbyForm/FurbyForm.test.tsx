@@ -1,6 +1,7 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { customRender } from "../../testsUtils/wrappers";
 import FurbyForm from "./FurbyForm";
+import userEvent from "@testing-library/user-event";
 
 describe("Given a FurbyForm component", () => {
   describe("When it is rendered", () => {
@@ -23,6 +24,22 @@ describe("Given a FurbyForm component", () => {
       const buttonText = screen.getByText(expectedButtonText);
 
       expect(buttonText).toBeInTheDocument();
+    });
+  });
+
+  describe("When it is rendered and the user types in all the text inputs fields", () => {
+    test("Then it should show the writen text in all these fields", async () => {
+      const expectedInputText = "Peachy";
+
+      customRender(<FurbyForm />);
+
+      const labelText = screen.getByLabelText("Name:");
+
+      await userEvent.type(labelText, expectedInputText);
+
+      const inputText = screen.getByDisplayValue(expectedInputText);
+
+      await waitFor(() => expect(inputText));
     });
   });
 });
