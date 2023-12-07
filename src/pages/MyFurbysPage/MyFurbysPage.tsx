@@ -21,7 +21,7 @@ const MyFurbysPage = (): React.ReactElement => {
         dispatch(hideLoadingActionCreator());
 
         toast.error("Sorry! We cant found Furbys!", {
-          style: { backgroundColor: "#C52323", color: "#fff" },
+          className: "toast toast--error",
         });
       }
     })();

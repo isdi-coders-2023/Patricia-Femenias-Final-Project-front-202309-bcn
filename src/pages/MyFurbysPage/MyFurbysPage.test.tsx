@@ -44,7 +44,9 @@ describe("Given the MyFurbysPage component", () => {
       customRender(<MyFurbysPage />);
 
       await waitFor(() => {
-        expect(screen.getByText(expectedErrorMessage)).toBeInTheDocument();
+        const errorMessage = screen.getByText(expectedErrorMessage);
+
+        expect(errorMessage).toBeInTheDocument();
       });
     });
   });

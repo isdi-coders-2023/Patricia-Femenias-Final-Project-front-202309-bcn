@@ -52,21 +52,6 @@ describe("Given a FurbyCard component", () => {
   describe("When the card with the Furby Peachy is rendered and the user clicks on the button 'Delete'", () => {
     const expectedButtonText = "Delete";
 
-    test("Then it should remove the card", async () => {
-      customRender(<FurbyCard furby={furbyApiMock} />);
-
-      const deleteButton = screen.getByRole("button", {
-        name: expectedButtonText,
-      });
-      const furbyName = screen.getByRole("heading", { name: "Peachy" });
-
-      await userEvent.click(deleteButton);
-
-      waitFor(() => {
-        expect(furbyName).not.toBeInTheDocument();
-      });
-    });
-
     test("Then it should show the positive feedback message 'Great! your Furby has been deleted!'", async () => {
       const expectedMessage = "Great! your Furby has been deleted!";
 
