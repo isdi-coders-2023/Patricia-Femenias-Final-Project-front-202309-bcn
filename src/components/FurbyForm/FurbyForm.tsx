@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
-import { FurbyWithoutId } from "../../store/features/furbys/types";
+import {
+  FurbyStructure,
+  FurbyWithoutId,
+} from "../../store/features/furbys/types";
 import Button from "../Button/Button";
 import FurbyFormStyled from "./FurbyFormStyled";
 
-const FurbyForm = (): React.ReactElement => {
+interface FurbyFormProps {
+  submitAction: (newFurby: FurbyStructure) => void;
+  initialState?: FurbyWithoutId;
+}
+
+const FurbyForm = ({
+  submitAction,
+  initialState,
+}: FurbyFormProps): React.ReactElement => {
   const emptyFurby: FurbyWithoutId = {
     name: "",
     type: "",
@@ -15,8 +26,10 @@ const FurbyForm = (): React.ReactElement => {
     imageUrl: "",
   };
 
+  const currentInitialState = initialState ? initialState : emptyFurby;
+
   const [newFurby, setNewFurby] = useState<FurbyWithoutId>(emptyFurby);
-  useState<FurbyWithoutId>(emptyFurby);
+  useState<FurbyWithoutId>(currentInitialState);
 
   const onChangeEditFurby = (
     event:
@@ -35,8 +48,17 @@ const FurbyForm = (): React.ReactElement => {
     newFurbyValues.every((value) => value !== "");
   }, [newFurby]);
 
+  const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitAction(newFurby as FurbyStructure);
+  };
+
   return (
-    <FurbyFormStyled className="form" autoComplete="off">
+    <FurbyFormStyled
+      onSubmit={onFormSubmit}
+      className="form"
+      autoComplete="off"
+    >
       <div className="form__row">
         <label className="form__label" htmlFor="name">
           Name:
