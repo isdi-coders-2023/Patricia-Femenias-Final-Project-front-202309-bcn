@@ -7,9 +7,12 @@ import {
 } from "../store/features/ui/uiSlice";
 import { useAppDispatch } from "../store/hooks";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const useFurbysApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
 
@@ -72,6 +75,8 @@ const useFurbysApi = () => {
           className: "toast toast--success",
         });
 
+        navigate("/");
+
         return furby;
       } catch (error) {
         dispatch(hideLoadingActionCreator());
@@ -81,7 +86,7 @@ const useFurbysApi = () => {
         });
       }
     },
-    [dispatch],
+    [dispatch, navigate],
   );
 
   return { getFurbysApi, deleteFurby, addNewFurby };
