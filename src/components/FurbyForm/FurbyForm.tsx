@@ -8,7 +8,6 @@ import FurbyFormStyled from "./FurbyFormStyled";
 
 interface FurbyFormProps {
   submitAction: (newFurby: FurbyStructure) => void;
-  initialState?: FurbyWithoutId;
 }
 
 const FurbyForm = ({ submitAction }: FurbyFormProps): React.ReactElement => {
