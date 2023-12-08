@@ -1,7 +1,15 @@
-import { renderHook } from "@testing-library/react";
+import { renderHook, screen } from "@testing-library/react";
 import furbysApiMock from "../mocks/furbysApiMock";
 import useFurbysApi from "./useFurbysApi";
-import { providerWrapper } from "../testsUtils/wrappers";
+import {
+  customRenderWithoutRouter,
+  providerWrapper,
+} from "../testsUtils/wrappers";
+import newFurbysList from "../mocks/newFurbysList";
+import { errorHandlers } from "../mocks/errorHandlers";
+import server from "../mocks/node";
+import { MemoryRouter } from "react-router-dom";
+import App from "../components/App/App";
 
 describe("Given a useFurbysApi custom hook", () => {
   describe("When it gets the information of two Furbys", () => {
@@ -34,6 +42,48 @@ describe("Given a useFurbysApi custom hook", () => {
       const response = await deleteFurby(expectedFurbyId);
 
       expect(response).toStrictEqual(expectedEmptyObject);
+    });
+  });
+
+  describe("When it calls its addNewFurby method with the new Furby Tiger", () => {
+    const newFurby = newFurbysList[2];
+
+    test("Then it should return the Tiger Furby from the API", async () => {
+      const {
+        result: {
+          current: { addNewFurby },
+        },
+      } = renderHook(() => useFurbysApi(), { wrapper: providerWrapper });
+
+      const response = await addNewFurby(newFurby);
+
+      expect(response).toStrictEqual(newFurby);
+    });
+  });
+
+  describe("When it try to call its addNewFurby method with the new Furby Tiger but an error occurs", () => {
+    test("Then it should show the error message 'Sorry! We couldn't add your Furby'", async () => {
+      server.use(...errorHandlers);
+
+      const expectedErrorMessage = "Sorry! We couldn't add your Furby";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/create"]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const {
+        result: {
+          current: { addNewFurby },
+        },
+      } = renderHook(() => useFurbysApi(), { wrapper: providerWrapper });
+
+      await addNewFurby(newFurbysList[2]);
+
+      const errorMessage = await screen.findByText(expectedErrorMessage);
+
+      expect(errorMessage).toBeInTheDocument();
     });
   });
 });

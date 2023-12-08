@@ -1,5 +1,6 @@
 import { http, HttpResponse } from "msw";
 import furbysApiMock from "./furbysApiMock";
+import newFurbysList from "./newFurbysList";
 
 const handlers = [
   http.get(`${import.meta.env.VITE_API_URL}/furbys`, () => {
@@ -10,6 +11,9 @@ const handlers = [
     () => {
       return HttpResponse.json({});
     },
+  ),
+  http.post(`${import.meta.env.VITE_API_URL}/furbys/create`, () =>
+    HttpResponse.json({ furby: newFurbysList[2] }),
   ),
 ];
 

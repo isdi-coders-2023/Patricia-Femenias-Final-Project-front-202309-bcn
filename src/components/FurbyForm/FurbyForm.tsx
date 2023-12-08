@@ -11,10 +11,7 @@ interface FurbyFormProps {
   initialState?: FurbyWithoutId;
 }
 
-const FurbyForm = ({
-  submitAction,
-  initialState,
-}: FurbyFormProps): React.ReactElement => {
+const FurbyForm = ({ submitAction }: FurbyFormProps): React.ReactElement => {
   const emptyFurby: FurbyWithoutId = {
     name: "",
     type: "",
@@ -26,10 +23,7 @@ const FurbyForm = ({
     imageUrl: "",
   };
 
-  const currentInitialState = initialState ? initialState : emptyFurby;
-
   const [newFurby, setNewFurby] = useState<FurbyWithoutId>(emptyFurby);
-  useState<FurbyWithoutId>(currentInitialState);
 
   const onChangeEditFurby = (
     event:
