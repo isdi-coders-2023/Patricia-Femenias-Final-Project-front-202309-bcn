@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
 import { PropsWithChildren } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { furbysReducer } from "../store/features/furbys/furbysSlice";
 import furbysApiMock from "../mocks/furbysApiMock";
 import { ThemeProvider } from "styled-components";
@@ -33,7 +33,11 @@ export const customRender = (children: React.ReactElement) => {
 };
 
 export const providerWrapper = ({ children }: PropsWithChildren) => {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <MemoryRouter>
+      <Provider store={store}>{children}</Provider>
+    </MemoryRouter>
+  );
 };
 
 export const customRenderWithoutRouter = (children: React.ReactElement) => {
