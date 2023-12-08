@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback } from "react";
-import { FurbyStructure } from "../store/features/furbys/types";
+import { FurbyStructure, FurbyWithoutId } from "../store/features/furbys/types";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
@@ -55,8 +55,34 @@ const useFurbysApi = () => {
     },
     [dispatch],
   );
+  const addNewFurby = useCallback(
+    async (newFurby: FurbyWithoutId): Promise<FurbyStructure | undefined> => {
+      dispatch(showLoadingActionCreator());
 
-  return { getFurbysApi, deleteFurby };
+      try {
+        const {
+          data: { furby },
+        } = await axios.post<{ furby: FurbyStructure }>(
+          "/furbys/create",
+          newFurby,
+        );
+        dispatch(hideLoadingActionCreator());
+
+        toast.success("Great! Your Furby has been added", {
+          className: "toast toast--success",
+        });
+
+        return furby;
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("Sorry! We couldn't add your Furby");
+      }
+    },
+    [dispatch],
+  );
+
+  return { getFurbysApi, deleteFurby, addNewFurby };
 };
 
 export default useFurbysApi;
