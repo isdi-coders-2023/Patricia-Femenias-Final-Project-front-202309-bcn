@@ -8,7 +8,9 @@ const GlobalStyle = createGlobalStyle`
     }
 
   :root {
+    --toastify-icon-color-success: #fff;
     --toastify-icon-color-success: #fff
+
   }
 
   body,

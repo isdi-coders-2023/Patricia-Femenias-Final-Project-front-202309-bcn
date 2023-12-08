@@ -18,6 +18,7 @@ const ButtonStyled = styled.button`
   &.button {
     &__form {
       width: 265px;
+      margin-top: 20px;
     }
   }
 `;
