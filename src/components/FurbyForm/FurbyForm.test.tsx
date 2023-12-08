@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { customRender } from "../../testsUtils/wrappers";
 import FurbyForm from "./FurbyForm";
 import userEvent from "@testing-library/user-event";
@@ -41,7 +41,7 @@ describe("Given a FurbyForm component", () => {
 
       const inputText = screen.getByDisplayValue(expectedInputText);
 
-      await waitFor(() => expect(inputText));
+      expect(inputText).toBeInTheDocument();
     });
   });
 
@@ -56,7 +56,36 @@ describe("Given a FurbyForm component", () => {
     });
   });
 
-  describe("When it is rendered and the user tpes in every input", () => {
-    test("Then it should");
+  describe("When the user types in every input and click ont the Create button", () => {
+    test("Then the button should call its onSubmit action", async () => {
+      const expectedInputText = "Tiger";
+      const expectedInputNumber = 7;
+      const ecxpectedButtonText = "Create";
+
+      customRender(<FurbyForm submitAction={actionOnClick} />);
+
+      const inputFurbyElement = screen.getByLabelText("Name:");
+      await userEvent.type(inputFurbyElement, expectedInputText);
+
+      const inputFurbysElement = screen.getByLabelText("Type:");
+      await userEvent.type(inputFurbysElement, expectedInputText);
+
+      const inputYearElement = screen.getByLabelText("Year:");
+      await userEvent.type(inputYearElement, expectedInputNumber.toString());
+
+      const inputGenerationElement = screen.getByLabelText("Generation:");
+      await userEvent.type(inputGenerationElement, expectedInputText);
+
+      const inputLanguageElement = screen.getByLabelText("Language:");
+      await userEvent.type(inputLanguageElement, expectedInputText);
+
+      const formButtonElement = screen.getByRole("button", {
+        name: ecxpectedButtonText,
+      });
+
+      await userEvent.click(formButtonElement);
+
+      await expect(actionOnClick).toHaveBeenCalled();
+    });
   });
 });

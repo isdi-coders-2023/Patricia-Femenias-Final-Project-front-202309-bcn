@@ -20,6 +20,7 @@ const FurbyFormStyled = styled.form`
       font-size: 1rem;
       display: inline-block;
       width: 100%;
+      resize: vertical;
     }
 
     &__label {
