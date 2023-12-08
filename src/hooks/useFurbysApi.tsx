@@ -76,7 +76,9 @@ const useFurbysApi = () => {
       } catch (error) {
         dispatch(hideLoadingActionCreator());
 
-        toast.error("Sorry! We couldn't add your Furby");
+        toast.error("Sorry! We couldn't add your Furby", {
+          className: "toast toast--error",
+        });
       }
     },
     [dispatch],

@@ -55,4 +55,8 @@ describe("Given a FurbyForm component", () => {
       expect(actionOnClick).toHaveBeenCalled();
     });
   });
+
+  describe("When it is rendered and the user tpes in every input", () => {
+    test("Then it should");
+  });
 });

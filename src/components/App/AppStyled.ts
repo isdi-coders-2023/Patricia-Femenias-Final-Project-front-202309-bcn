@@ -6,6 +6,7 @@ const AppStyled = styled.div`
   justify-content: center;
   padding: 0 10px;
   align-items: center;
+  margin-bottom: 20px;
 `;
 
 export default AppStyled;

@@ -131,25 +131,25 @@ const FurbyForm = ({ submitAction }: FurbyFormProps): React.ReactElement => {
         />
       </div>
       <div className="form__row">
-        <label className="form__label" htmlFor="howFind">
+        <label className="form__label" htmlFor="howFoundIt">
           How did you find it?:
         </label>
         <textarea
           className="form__input"
-          id="howFind"
+          id="howFoundIt"
           value={newFurby.howFoundIt}
           onChange={onChangeEditFurby}
           required
         />
       </div>
       <div className="form__row">
-        <label className="form__label" htmlFor="picture">
+        <label className="form__label" htmlFor="imageUrl">
           Picture Url:
         </label>
         <input
           className="form__input"
           type="url"
-          id="picture"
+          id="imageUrl"
           value={newFurby.imageUrl}
           onChange={onChangeEditFurby}
           required
