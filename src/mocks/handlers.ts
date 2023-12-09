@@ -15,6 +15,12 @@ const handlers = [
   http.post(`${import.meta.env.VITE_API_URL}/furbys/create`, () =>
     HttpResponse.json({ furby: newFurbysList[2] }),
   ),
+  http.get(
+    `${import.meta.env.VITE_API_URL}/furbys/6564a27d66ed505ce77a67d4`,
+    () => {
+      return HttpResponse.json({ furby: newFurbysList[1] });
+    },
+  ),
 ];
 
 export default handlers;

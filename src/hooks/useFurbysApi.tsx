@@ -89,7 +89,28 @@ const useFurbysApi = () => {
     [dispatch, navigate],
   );
 
-  return { getFurbysApi, deleteFurby, addNewFurby };
+  const loadSelectedFurby = useCallback(
+    async (id: string): Promise<FurbyStructure | void> => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        const {
+          data: { furby },
+        } = await axios.get<{ furby: FurbyStructure }>(`/furbys/${id}`);
+
+        dispatch(hideLoadingActionCreator);
+
+        return furby;
+      } catch {
+        toast.error("Sorry! We couldn't find your Furby", {
+          className: "toast toast--error",
+        });
+      }
+    },
+    [dispatch],
+  );
+
+  return { getFurbysApi, deleteFurby, addNewFurby, loadSelectedFurby };
 };
 
 export default useFurbysApi;
