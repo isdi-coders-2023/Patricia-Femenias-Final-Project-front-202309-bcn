@@ -1,11 +1,14 @@
 import furbysApiMock from "../../../../mocks/furbysApiMock";
 import { deleteFurbyActionCreator, furbysReducer } from "../furbysSlice";
-import { FurbyStateStructure } from "../types";
+import { FurbyStateStructure, FurbyStructure } from "../types";
 
 describe("Given a furbySlice with a deleteFurby minireducer", () => {
   describe("When it receives a list of Furbys and the Peachy's id", () => {
     test("Then it should return the list of Furbys without Peachy", () => {
-      const initialState: FurbyStateStructure = { furbys: furbysApiMock };
+      const initialState: FurbyStateStructure = {
+        furbys: furbysApiMock,
+        selectedFurby: {} as FurbyStructure,
+      };
       const expectedDeletedFurby = "Peachy";
 
       const currentFurbysState = furbysReducer(
