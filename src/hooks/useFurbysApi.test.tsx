@@ -102,4 +102,31 @@ describe("Given a useFurbysApi custom hook", () => {
       expect(selectedFurby).toStrictEqual(newFurbysList[1]);
     });
   });
+
+  describe("When it try to call its loadSelectedFurby method but an error occurs", () => {
+    test("Then it should show the error message 'Sorry! We couldn't find your Furby'", async () => {
+      server.use(...errorHandlers);
+
+      const expectedFurbyId = newFurbysList[1]._id;
+      const expectedErrorMessage = "Sorry! We couldn't find your Furby";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/furbys/6564a27d66ed505ce77a67d4"]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const {
+        result: {
+          current: { loadSelectedFurby },
+        },
+      } = renderHook(() => useFurbysApi(), { wrapper: providerWrapper });
+
+      await loadSelectedFurby(expectedFurbyId);
+
+      const errorMessage = await screen.findByText(expectedErrorMessage);
+
+      expect(errorMessage).toBeInTheDocument();
+    });
+  });
 });
