@@ -97,4 +97,47 @@ describe("Given an App component", () => {
       expect(pageNotFoundImage).toBeInTheDocument();
     });
   });
+
+  describe("When it receives a path to /create and it renders the Create page", () => {
+    test("Then it should show the title 'Add a new Furby' into a heading", () => {
+      const expectedTitle = "Add a new Furby";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/create"]}>
+          <App />
+        </MemoryRouter>,
+      );
+      const title = screen.getByRole("heading", { name: expectedTitle });
+
+      expect(title).toBeInTheDocument();
+    });
+
+    test("Then it should render a form with a label 'Name:'", () => {
+      const expectedLabelText = "Name:";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/create"]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const labelText = screen.getByLabelText(expectedLabelText);
+
+      expect(labelText).toBeInTheDocument();
+    });
+
+    test("Then it should render a button to submit the form with the text 'Create'", () => {
+      const expectedButtonText = "Create";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/create"]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const buttonText = screen.getByText(expectedButtonText);
+
+      expect(buttonText).toBeInTheDocument();
+    });
+  });
 });
