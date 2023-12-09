@@ -3,6 +3,7 @@ import { FurbyStateStructure, FurbyStructure } from "./types";
 
 export const initialFurbysState: FurbyStateStructure = {
   furbys: [],
+  selectedFurby: {} as FurbyStructure,
 };
 
 const furbysSlice = createSlice({
@@ -34,6 +35,14 @@ const furbysSlice = createSlice({
       ...currentState,
       furbys: [...currentState.furbys, action.payload],
     }),
+
+    loadSelectedFurby: (
+      currentState,
+      action: PayloadAction<FurbyStructure>,
+    ) => ({
+      ...currentState,
+      selectedFurby: action.payload,
+    }),
   },
 });
 
@@ -43,4 +52,5 @@ export const {
   loadFurbys: loadFurbysActionCreator,
   deleteFurby: deleteFurbyActionCreator,
   addNewFurby: addNewFurbyActionCreator,
+  loadSelectedFurby: loadSelectedFurbyActionCreator,
 } = furbysSlice.actions;
