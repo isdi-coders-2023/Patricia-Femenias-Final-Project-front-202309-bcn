@@ -1,6 +1,6 @@
 import furbysApiMock from "../../../../mocks/furbysApiMock";
 import { furbysReducer, loadFurbysActionCreator } from "../furbysSlice";
-import { FurbyStateStructure } from "../types";
+import { FurbyStateStructure, FurbyStructure } from "../types";
 
 describe("Given a furbysReducer", () => {
   describe("When it receives an empty list of Furbys", () => {
@@ -8,6 +8,7 @@ describe("Given a furbysReducer", () => {
       const furbysList = furbysApiMock;
       const currentListState: FurbyStateStructure = {
         furbys: [],
+        selectedFurby: {} as FurbyStructure,
       };
 
       const newListState = furbysReducer(

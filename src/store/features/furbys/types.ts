@@ -12,6 +12,7 @@ export interface FurbyStructure {
 
 export interface FurbyStateStructure {
   furbys: FurbyStructure[];
+  selectedFurby: FurbyStructure;
 }
 
 export type FurbyWithoutId = Omit<FurbyStructure, "_id">;

@@ -3,7 +3,10 @@ import CreatePage from "./CreatePage";
 import { customRender } from "../../testsUtils/wrappers";
 import userEvent from "@testing-library/user-event";
 import { store } from "../../store";
-import { FurbyStateStructure } from "../../store/features/furbys/types";
+import {
+  FurbyStateStructure,
+  FurbyStructure,
+} from "../../store/features/furbys/types";
 
 describe("Given the CreatePage component", () => {
   describe("When it is rendered", () => {
@@ -40,7 +43,10 @@ describe("Given the CreatePage component", () => {
   describe("When it is rendered and it shows a form that user send", () => {
     test("Then it should call its onSubmit action", async () => {
       const expectedButtonName = "Create";
-      const expectedFurbysState: FurbyStateStructure = { furbys: [] };
+      const expectedFurbysState: FurbyStateStructure = {
+        furbys: [],
+        selectedFurby: {} as FurbyStructure,
+      };
 
       customRender(<CreatePage />);
 
