@@ -86,4 +86,20 @@ describe("Given a useFurbysApi custom hook", () => {
       expect(errorMessage).toBeInTheDocument();
     });
   });
+
+  describe("When it calls its loadSelectedFurby method with the Furby Gizmo id", () => {
+    test("Then it should return the Furby Gizmo", async () => {
+      const expectedFurbyId = newFurbysList[1]._id;
+
+      const {
+        result: {
+          current: { loadSelectedFurby },
+        },
+      } = renderHook(() => useFurbysApi(), { wrapper: providerWrapper });
+
+      const selectedFurby = await loadSelectedFurby(expectedFurbyId);
+
+      expect(selectedFurby).toStrictEqual(newFurbysList[1]);
+    });
+  });
 });
