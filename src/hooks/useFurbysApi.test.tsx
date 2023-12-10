@@ -1,4 +1,5 @@
 import { renderHook, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import furbysApiMock from "../mocks/furbysApiMock";
 import useFurbysApi from "./useFurbysApi";
 import {
@@ -8,7 +9,6 @@ import {
 import newFurbysList from "../mocks/newFurbysList";
 import { errorHandlers } from "../mocks/errorHandlers";
 import server from "../mocks/node";
-import { MemoryRouter } from "react-router-dom";
 import App from "../components/App/App";
 
 describe("Given a useFurbysApi custom hook", () => {

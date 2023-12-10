@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { customRender } from "../../testsUtils/wrappers";
 import Button from "./Button";
-import userEvent from "@testing-library/user-event";
 
 describe("Given a Button component", () => {
   describe("When it receives the text 'Modify'", () => {

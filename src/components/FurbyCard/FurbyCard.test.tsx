@@ -1,8 +1,8 @@
 import { screen, waitFor } from "@testing-library/react";
 import furbyApiMock from "../../mocks/FurbyApiMock";
+import userEvent from "@testing-library/user-event";
 import { customRender } from "../../testsUtils/wrappers";
 import FurbyCard from "./FurbyCard";
-import userEvent from "@testing-library/user-event";
 import { errorHandlers } from "../../mocks/errorHandlers";
 import server from "../../mocks/node";
 

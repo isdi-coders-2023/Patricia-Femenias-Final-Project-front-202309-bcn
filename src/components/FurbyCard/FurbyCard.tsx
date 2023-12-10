@@ -1,10 +1,10 @@
+import { NavLink } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
 import useFurbysApi from "../../hooks/useFurbysApi";
 import { deleteFurbyActionCreator } from "../../store/features/furbys/furbysSlice";
 import { FurbyStructure } from "../../store/features/furbys/types";
-import { useAppDispatch } from "../../store/hooks";
 import Button from "../Button/Button";
 import FurbyCardStyled from "./FurbyCardStyled";
-import { NavLink } from "react-router-dom";
 
 interface FurbyCardProps {
   furby: FurbyStructure;

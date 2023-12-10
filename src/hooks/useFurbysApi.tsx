@@ -1,13 +1,13 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
+import { toast } from "react-toastify";
 import { FurbyStructure, FurbyWithoutId } from "../store/features/furbys/types";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../store/features/ui/uiSlice";
 import { useAppDispatch } from "../store/hooks";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const useFurbysApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
