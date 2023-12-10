@@ -1,10 +1,10 @@
 import { screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import App from "./App";
 import {
   customRender,
   customRenderWithoutRouter,
 } from "../../testsUtils/wrappers";
-import { MemoryRouter } from "react-router-dom";
 import furbysApiMock from "../../mocks/furbysApiMock";
 
 describe("Given an App component", () => {

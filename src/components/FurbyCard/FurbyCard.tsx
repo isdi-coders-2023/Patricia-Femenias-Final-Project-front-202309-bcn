@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
 import useFurbysApi from "../../hooks/useFurbysApi";
 import { deleteFurbyActionCreator } from "../../store/features/furbys/furbysSlice";
 import { FurbyStructure } from "../../store/features/furbys/types";
-import { useAppDispatch } from "../../store/hooks";
 import Button from "../Button/Button";
 import FurbyCardStyled from "./FurbyCardStyled";
 
@@ -22,13 +23,15 @@ const FurbyCard = ({
 
   return (
     <FurbyCardStyled>
-      <img
-        className="furby-card__image"
-        src={imageUrl}
-        alt={name}
-        width="300"
-        height="300"
-      />
+      <Link to={`/my-furbys/${_id}`}>
+        <img
+          className="furby-card__image"
+          src={imageUrl}
+          alt={name}
+          width="300"
+          height="300"
+        />
+      </Link>
       <div className="furby-card__name-container">
         <span>♥</span>
         <h2 className="furby-card__name">{name}</h2>

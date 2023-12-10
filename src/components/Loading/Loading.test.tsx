@@ -1,5 +1,5 @@
-import { customRender } from "../../testsUtils/wrappers";
 import { screen } from "@testing-library/react";
+import { customRender } from "../../testsUtils/wrappers";
 import Loading from "./Loading";
 
 describe("Given a Loading component", () => {

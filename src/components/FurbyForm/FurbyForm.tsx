@@ -44,6 +44,8 @@ const FurbyForm = ({ submitAction }: FurbyFormProps): React.ReactElement => {
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     submitAction(newFurby as FurbyStructure);
+
+    scrollTo(0, 0);
   };
 
   return (

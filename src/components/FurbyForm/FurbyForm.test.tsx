@@ -1,7 +1,7 @@
 import { fireEvent, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { customRender } from "../../testsUtils/wrappers";
 import FurbyForm from "./FurbyForm";
-import userEvent from "@testing-library/user-event";
 
 describe("Given a FurbyForm component", () => {
   const actionOnClick = vi.fn();
