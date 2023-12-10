@@ -16,6 +16,8 @@ const DetailPage = (): React.ReactElement => {
   );
 
   useMemo(async () => {
+    scrollTo(0, 0);
+
     const furby = await loadSelectedFurby(furbyId!);
 
     dispatch(loadSelectedFurbyActionCreator(furby!));
