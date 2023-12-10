@@ -135,9 +135,26 @@ describe("Given an App component", () => {
         </MemoryRouter>,
       );
 
-      const buttonText = screen.getByText(expectedButtonText);
+      const buttonText = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
 
       expect(buttonText).toBeInTheDocument();
+    });
+  });
+
+  describe("When it receives a path to /my-furbys/:furbyId and it renders a Detail page", () => {
+    test("Then it should show the title 'My Furby's details' into a heading", () => {
+      const expectedTitle = "My Furby's details";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/my-furbys/6564a27d66ed505ce77a67d4"]}>
+          <App />
+        </MemoryRouter>,
+      );
+      const title = screen.getByRole("heading", { name: expectedTitle });
+
+      expect(title).toBeInTheDocument();
     });
   });
 });

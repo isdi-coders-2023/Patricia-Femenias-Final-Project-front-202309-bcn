@@ -23,7 +23,9 @@ describe("Given a FurbyForm component", () => {
       const expectedButtonText = "Create";
 
       customRender(<FurbyForm submitAction={actionOnClick} />);
-      const buttonText = screen.getByText(expectedButtonText);
+      const buttonText = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
 
       expect(buttonText).toBeInTheDocument();
     });

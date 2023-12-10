@@ -34,7 +34,9 @@ describe("Given the CreatePage component", () => {
       const expectedButtonText = "Create";
 
       customRender(<CreatePage />);
-      const buttonText = screen.getByText(expectedButtonText);
+      const buttonText = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
 
       expect(buttonText).toBeInTheDocument();
     });

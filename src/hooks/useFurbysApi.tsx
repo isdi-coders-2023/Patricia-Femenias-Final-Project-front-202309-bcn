@@ -98,10 +98,11 @@ const useFurbysApi = () => {
           data: { furby },
         } = await axios.get<{ furby: FurbyStructure }>(`/furbys/${id}`);
 
-        dispatch(hideLoadingActionCreator);
+        dispatch(hideLoadingActionCreator());
 
         return furby;
       } catch {
+        dispatch(hideLoadingActionCreator());
         toast.error("Sorry! We couldn't find your Furby", {
           className: "toast toast--error",
         });
