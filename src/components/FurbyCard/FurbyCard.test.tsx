@@ -1,10 +1,14 @@
 import { screen, waitFor } from "@testing-library/react";
 import furbyApiMock from "../../mocks/FurbyApiMock";
 import userEvent from "@testing-library/user-event";
-import { customRender } from "../../testsUtils/wrappers";
+import {
+  customRender,
+  customRenderWithoutRouter,
+} from "../../testsUtils/wrappers";
 import FurbyCard from "./FurbyCard";
 import { errorHandlers } from "../../mocks/errorHandlers";
 import server from "../../mocks/node";
+import { MemoryRouter } from "react-router-dom";
 
 describe("Given a FurbyCard component", () => {
   describe("When it receives Peachy's data", () => {
@@ -89,6 +93,36 @@ describe("Given a FurbyCard component", () => {
 
       await waitFor(() => {
         expect(message).toBeInTheDocument();
+      });
+    });
+
+    describe("When the user clicks on the Gizmo's image", () => {
+      test("Then it should be a link", () => {
+        customRenderWithoutRouter(
+          <MemoryRouter initialEntries={["/my-furbys/6564a27d66ed505ce77a673"]}>
+            <FurbyCard furby={furbyApiMock} />
+          </MemoryRouter>,
+        );
+
+        const link = screen.getByRole("link");
+
+        expect(link).toBeInTheDocument();
+      });
+    });
+
+    describe("When the user clicks on the Gizmo's image", () => {
+      test("Then it should be redirected to Gizmo's DetailsPage", () => {
+        const expectedTitle = "Peachy";
+
+        customRenderWithoutRouter(
+          <MemoryRouter initialEntries={["/my-furbys/6564a27d66ed505ce77a673"]}>
+            <FurbyCard furby={furbyApiMock} />
+          </MemoryRouter>,
+        );
+
+        const title = screen.getByRole("heading", { name: expectedTitle });
+
+        expect(title).toBeInTheDocument();
       });
     });
   });
