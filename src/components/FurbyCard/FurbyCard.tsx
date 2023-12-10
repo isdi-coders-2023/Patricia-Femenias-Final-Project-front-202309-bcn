@@ -4,6 +4,7 @@ import { FurbyStructure } from "../../store/features/furbys/types";
 import { useAppDispatch } from "../../store/hooks";
 import Button from "../Button/Button";
 import FurbyCardStyled from "./FurbyCardStyled";
+import { NavLink } from "react-router-dom";
 
 interface FurbyCardProps {
   furby: FurbyStructure;
@@ -22,13 +23,15 @@ const FurbyCard = ({
 
   return (
     <FurbyCardStyled>
-      <img
-        className="furby-card__image"
-        src={imageUrl}
-        alt={name}
-        width="300"
-        height="300"
-      />
+      <NavLink to={`/my-furbys/${_id}`}>
+        <img
+          className="furby-card__image"
+          src={imageUrl}
+          alt={name}
+          width="300"
+          height="300"
+        />
+      </NavLink>
       <div className="furby-card__name-container">
         <span>♥</span>
         <h2 className="furby-card__name">{name}</h2>

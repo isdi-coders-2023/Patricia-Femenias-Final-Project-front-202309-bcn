@@ -22,6 +22,7 @@ const FurbyCardStyled = styled.article`
     &__name-container {
       display: flex;
       align-items: center;
+      justify-content: center;
     }
 
     &__name {
@@ -37,6 +38,7 @@ const FurbyCardStyled = styled.article`
       gap: 5px;
       padding-left: 6px;
       padding-bottom: 30px;
+      flex-direction: column;
     }
 
     &__details {
