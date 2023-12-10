@@ -34,7 +34,9 @@ describe("Given a FurbyCard component", () => {
       const expectedButtonText = "Modify";
 
       customRender(<FurbyCard furby={furbyApiMock} />);
-      const buttonText = screen.getByText(expectedButtonText);
+      const buttonText = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
 
       expect(buttonText).toBeInTheDocument();
     });
@@ -43,7 +45,9 @@ describe("Given a FurbyCard component", () => {
       const expectedButtonText = "Delete";
 
       customRender(<FurbyCard furby={furbyApiMock} />);
-      const buttonText = screen.getByText(expectedButtonText);
+      const buttonText = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
 
       expect(buttonText).toBeInTheDocument();
     });
