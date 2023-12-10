@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useMemo } from "react";
+import { useEffect } from "react";
 import PageStyled from "../PageStyled";
 import Button from "../../components/Button/Button";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import useFurbysApi from "../../hooks/useFurbysApi";
 import { loadSelectedFurbyActionCreator } from "../../store/features/furbys/furbysSlice";
 import DetailPageStyled from "./DetailPageStyled";
+import { FurbyStructure } from "../../store/features/furbys/types";
 
 const DetailPage = (): React.ReactElement => {
   const { furbyId } = useParams();
@@ -15,12 +16,14 @@ const DetailPage = (): React.ReactElement => {
     (state) => state.furbysState.selectedFurby,
   );
 
-  useMemo(async () => {
-    scrollTo(0, 0);
+  useEffect(() => {
+    (async () => {
+      scrollTo(0, 0);
 
-    const furby = await loadSelectedFurby(furbyId!);
+      const furby = await loadSelectedFurby(furbyId as string);
 
-    dispatch(loadSelectedFurbyActionCreator(furby!));
+      dispatch(loadSelectedFurbyActionCreator(furby as FurbyStructure));
+    })();
   }, [dispatch, furbyId, loadSelectedFurby]);
 
   return (
