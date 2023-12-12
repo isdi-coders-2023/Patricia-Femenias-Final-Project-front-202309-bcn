@@ -1,5 +1,5 @@
 import { screen, waitFor } from "@testing-library/react";
-import furbyApiMock from "../../mocks/FurbyApiMock";
+import furbyApiMock from "../../mocks/furbyApiMock";
 import userEvent from "@testing-library/user-event";
 import {
   customRender,
