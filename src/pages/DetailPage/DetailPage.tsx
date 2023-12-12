@@ -1,30 +1,53 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import PageStyled from "../PageStyled";
 import Button from "../../components/Button/Button";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import useFurbysApi from "../../hooks/useFurbysApi";
-import { loadSelectedFurbyActionCreator } from "../../store/features/furbys/furbysSlice";
+import {
+  deleteFurbyActionCreator,
+  loadSelectedFurbyActionCreator,
+} from "../../store/features/furbys/furbysSlice";
 import DetailPageStyled from "./DetailPageStyled";
-import { FurbyStructure } from "../../store/features/furbys/types";
 
 const DetailPage = (): React.ReactElement => {
+  const { loadSelectedFurby, deleteFurby } = useFurbysApi();
   const { furbyId } = useParams();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { loadSelectedFurby } = useFurbysApi();
-  const selectedFurby = useAppSelector(
-    (state) => state.furbysState.selectedFurby,
-  );
+
+  const {
+    selectedFurby: {
+      _id,
+      generation,
+      howFoundIt,
+      imageUrl,
+      language,
+      name,
+      price,
+      type,
+      year,
+    },
+  } = useAppSelector((state) => state.furbysState);
 
   useEffect(() => {
     (async () => {
       scrollTo(0, 0);
 
-      const furby = await loadSelectedFurby(furbyId as string);
+      const selectedFurby = await loadSelectedFurby(furbyId!);
 
-      dispatch(loadSelectedFurbyActionCreator(furby as FurbyStructure));
+      dispatch(loadSelectedFurbyActionCreator(selectedFurby!));
     })();
-  }, [dispatch, furbyId, loadSelectedFurby]);
+  }, [dispatch, loadSelectedFurby, furbyId, navigate]);
+
+  const deleteFurbyButton = async () => {
+    await deleteFurby(_id);
+
+    dispatch(deleteFurbyActionCreator(_id));
+
+    navigate("/");
+    scrollTo;
+  };
 
   return (
     <>
@@ -34,45 +57,50 @@ const DetailPage = (): React.ReactElement => {
       <DetailPageStyled>
         <img
           className="furby-card__image"
-          src={selectedFurby.imageUrl}
-          alt={selectedFurby.name}
+          src={imageUrl}
+          alt={name}
           width="300"
           height="300"
         />
         <div className="furby-card__name-container">
           <span>♥</span>
-          <h2 className="furby-card__name">{selectedFurby.name}</h2>
+          <h2 className="furby-card__name">{name}</h2>
           <span>♥</span>
         </div>
         <dl className="furby-card__info-container">
           <div className="furby-card__details">
             <dt className="furby-card__title-info">Type:</dt>
-            <dd className="furby-card__info">{selectedFurby.type}</dd>
+            <dd className="furby-card__info">{type}</dd>
           </div>
           <div className="furby-card__details">
             <dt className="furby-card__title-info">Year:</dt>
-            <dd className="furby-card__info">{selectedFurby.year}</dd>
+            <dd className="furby-card__info">{year}</dd>
           </div>
           <div className="furby-card__details">
             <dt className="furby-card__title-info">Generation:</dt>
-            <dd className="furby-card__info">{selectedFurby.generation}</dd>
+            <dd className="furby-card__info">{generation}</dd>
           </div>
           <div className="furby-card__details">
             <dt className="furby-card__title-info">Language:</dt>
-            <dd className="furby-card__info">{selectedFurby.language}</dd>
+            <dd className="furby-card__info">{language}</dd>
           </div>
           <div className="furby-card__details">
             <dt className="furby-card__title-info">Price:</dt>
-            <dd className="furby-card__info">{selectedFurby.price}</dd>
+            <dd className="furby-card__info">{price}</dd>
           </div>
           <div className="furby-card__textarea-container">
             <dt className="furby-card__title-info">How did you find it?</dt>
-            <dd className="furby-card__textarea">{selectedFurby.howFoundIt}</dd>
+            <dd className="furby-card__textarea">{howFoundIt}</dd>
           </div>
         </dl>
         <div className="furby-card__button-container">
-          <Button text="Modify" />
-          <Button text="Delete" />
+          <Button
+            text="Modify"
+            actionOnClick={() => {
+              navigate(`/my-furbys/${_id}/modify`);
+            }}
+          />
+          <Button text="Delete" actionOnClick={deleteFurbyButton} />
         </div>
       </DetailPageStyled>
     </>
