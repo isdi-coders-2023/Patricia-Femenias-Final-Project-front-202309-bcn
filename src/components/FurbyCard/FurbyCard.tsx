@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/hooks";
-import useFurbysApi from "../../hooks/useFurbysApi";
+import useFurbysApi from "../../hooks/useFurbysApi.tsx";
 import {
   deleteFurbyActionCreator,
   loadSelectedFurbyActionCreator,
