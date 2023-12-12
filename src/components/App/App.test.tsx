@@ -6,6 +6,7 @@ import {
   customRenderWithoutRouter,
 } from "../../testsUtils/wrappers";
 import furbysApiMock from "../../mocks/furbysApiMock";
+import userEvent from "@testing-library/user-event";
 
 describe("Given an App component", () => {
   describe("When it is rendered", () => {
@@ -155,6 +156,104 @@ describe("Given an App component", () => {
       const title = screen.getByRole("heading", { name: expectedTitle });
 
       expect(title).toBeInTheDocument();
+    });
+
+    test("Then it should should go the ModifyPage when the Modidy button is clicked", async () => {
+      const expectedButtonText = "Modify";
+      const expectedMyFurbysPageTitle = "Modify your Furby";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/my-furbys/6564a27d66ed505ce77a67d4"]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const modifyButton = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
+
+      await userEvent.click(modifyButton);
+
+      const myFurbysPageTitle = await screen.findByRole("heading", {
+        name: expectedMyFurbysPageTitle,
+      });
+
+      expect(myFurbysPageTitle).toBeInTheDocument();
+    });
+
+    test("Then it should should be redirected to MyFurbysPage when the Delete button is clicked", async () => {
+      const expectedButtonText = "Delete";
+      const expectedMyFurbysPageTitle = "My Furby collection";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/my-furbys/6564a27d66ed505ce77a67d4"]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const deleteButton = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
+
+      await userEvent.click(deleteButton);
+
+      const myFurbysPageTitle = await screen.findByRole("heading", {
+        name: expectedMyFurbysPageTitle,
+      });
+
+      expect(myFurbysPageTitle).toBeInTheDocument();
+    });
+  });
+
+  describe("When it receives a path to /my-furbys/656f11e3382141d346c68356/modify and it renders de Gizmo modify page", () => {
+    test("Then it should be redirected to My Furbys page after modify Gizmo's info", async () => {
+      const expectedModifyButton = "Modify";
+      const expectedMyFurbysPageTitle = "My Furby collection";
+
+      customRenderWithoutRouter(
+        <MemoryRouter
+          initialEntries={["/my-furbys/6564a27d66ed505ce77a67d3/modify"]}
+        >
+          <App />
+        </MemoryRouter>,
+      );
+
+      const modifyButton = screen.getByRole("button", {
+        name: expectedModifyButton,
+      });
+
+      await userEvent.click(modifyButton);
+
+      const myFurbysPageTitle = await screen.findByRole("heading", {
+        name: expectedMyFurbysPageTitle,
+      });
+
+      expect(myFurbysPageTitle).toBeInTheDocument();
+    });
+  });
+
+  describe("When it is rendered on MyFurbysPage and the user clicks on the Peachy's Modify button", () => {
+    test("Then it should go to the ModifyPage", async () => {
+      const expectedModifyButton = "Modify";
+      const expectedModifyTitlePage = "Modify your Furby";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/my-furbys"]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const modifyButton = screen.getAllByRole("button", {
+        name: expectedModifyButton,
+      });
+
+      await userEvent.click(modifyButton[0]);
+
+      const modifyTitlePage = await screen.findByRole("heading", {
+        name: expectedModifyTitlePage,
+      });
+
+      expect(modifyTitlePage).toBeInTheDocument();
     });
   });
 });
