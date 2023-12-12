@@ -12,6 +12,7 @@ import GlobalStyle from "../styles/GlobalStyle";
 import { uiReducer } from "../store/features/ui/uiSlice";
 import { store } from "../store";
 import { FurbyStructure } from "../store/features/furbys/types";
+import newFurbysList from "../mocks/newFurbysList";
 
 export const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
@@ -19,7 +20,8 @@ export const customRender = (children: React.ReactElement) => {
     preloadedState: {
       furbysState: {
         furbys: furbysApiMock,
-        selectedFurby: {} as FurbyStructure,
+        selectedFurby: newFurbysList[0],
+        currentFurby: newFurbysList[0] as FurbyStructure,
       },
       uiState: { isLoading: false },
     },
@@ -50,7 +52,8 @@ export const customRenderWithoutRouter = (children: React.ReactElement) => {
     preloadedState: {
       furbysState: {
         furbys: furbysApiMock,
-        selectedFurby: {} as FurbyStructure,
+        selectedFurby: newFurbysList[0] as FurbyStructure,
+        currentFurby: newFurbysList[0] as FurbyStructure,
       },
       uiState: { isLoading: false },
     },

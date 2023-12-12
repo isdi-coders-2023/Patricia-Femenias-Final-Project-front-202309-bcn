@@ -1,5 +1,4 @@
 import { screen, waitFor } from "@testing-library/react";
-import furbyApiMock from "../../mocks/FurbyApiMock";
 import userEvent from "@testing-library/user-event";
 import {
   customRender,
@@ -9,6 +8,7 @@ import FurbyCard from "./FurbyCard";
 import { errorHandlers } from "../../mocks/errorHandlers";
 import server from "../../mocks/node";
 import { MemoryRouter } from "react-router-dom";
+import furbyApiMock from "../../mocks/furbyApiMock";
 
 describe("Given a FurbyCard component", () => {
   describe("When it receives Peachy's data", () => {

@@ -111,7 +111,43 @@ const useFurbysApi = () => {
     [dispatch],
   );
 
-  return { getFurbysApi, deleteFurby, addNewFurby, loadSelectedFurby };
+  const modifyFurby = useCallback(
+    async (modifiedFurby: FurbyWithoutId, id: string) => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        const {
+          data: { furby },
+        } = await axios.patch<{ furby: FurbyStructure }>(
+          `/furbys/${id}`,
+          modifiedFurby,
+        );
+        dispatch(hideLoadingActionCreator());
+
+        toast.success("Great! Your Furby has been modified", {
+          className: "toast toast--success",
+        });
+        navigate("/my-furbys");
+
+        return furby;
+      } catch {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("Sorry! We couldn't modify your Furby", {
+          className: "toast toast--error",
+        });
+      }
+    },
+    [dispatch, navigate],
+  );
+
+  return {
+    getFurbysApi,
+    deleteFurby,
+    addNewFurby,
+    loadSelectedFurby,
+    modifyFurby,
+  };
 };
 
 export default useFurbysApi;

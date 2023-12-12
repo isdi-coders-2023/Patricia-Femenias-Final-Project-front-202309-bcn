@@ -7,11 +7,17 @@ import Button from "../Button/Button";
 import FurbyFormStyled from "./FurbyFormStyled";
 
 interface FurbyFormProps {
-  submitAction: (newFurby: FurbyStructure) => void;
+  submitAction: (furby: FurbyWithoutId) => void;
+  selectedFurby?: FurbyStructure;
+  buttonText: string;
 }
 
-const FurbyForm = ({ submitAction }: FurbyFormProps): React.ReactElement => {
-  const emptyFurby: FurbyWithoutId = {
+const FurbyForm = ({
+  buttonText,
+  submitAction,
+  selectedFurby,
+}: FurbyFormProps): React.ReactElement => {
+  let emptyFurby: FurbyWithoutId = {
     name: "",
     type: "",
     year: 0,
@@ -22,7 +28,15 @@ const FurbyForm = ({ submitAction }: FurbyFormProps): React.ReactElement => {
     imageUrl: "",
   };
 
+  if (selectedFurby) {
+    emptyFurby = selectedFurby;
+  }
+
   const [newFurby, setNewFurby] = useState<FurbyWithoutId>(emptyFurby);
+
+  useEffect(() => {
+    Object.values(newFurby).every((field) => field !== "");
+  }, [newFurby]);
 
   const onChangeEditFurby = (
     event:
@@ -35,15 +49,10 @@ const FurbyForm = ({ submitAction }: FurbyFormProps): React.ReactElement => {
     }));
   };
 
-  useEffect(() => {
-    const newFurbyValues = Object.values(newFurby);
-
-    newFurbyValues.every((value) => value !== "");
-  }, [newFurby]);
-
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitAction(newFurby as FurbyStructure);
+
+    submitAction(newFurby);
 
     scrollTo(0, 0);
   };
@@ -157,7 +166,7 @@ const FurbyForm = ({ submitAction }: FurbyFormProps): React.ReactElement => {
           required
         />
       </div>
-      <Button className="button__form" text="Create" />
+      <Button className="button__form" text={buttonText} />
     </FurbyFormStyled>
   );
 };

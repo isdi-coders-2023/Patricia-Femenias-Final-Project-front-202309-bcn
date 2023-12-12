@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/hooks";
-import useFurbysApi from "../../hooks/useFurbysApi";
-import { deleteFurbyActionCreator } from "../../store/features/furbys/furbysSlice";
+import useFurbysApi from "../../hooks/useFurbysApi.tsx";
+import {
+  deleteFurbyActionCreator,
+  loadSelectedFurbyActionCreator,
+} from "../../store/features/furbys/furbysSlice";
 import { FurbyStructure } from "../../store/features/furbys/types";
 import Button from "../Button/Button";
 import FurbyCardStyled from "./FurbyCardStyled";
@@ -11,14 +14,24 @@ interface FurbyCardProps {
 }
 
 const FurbyCard = ({
-  furby: { imageUrl, name, type, year, price, _id },
+  furby: { imageUrl, name, type, year, generation, _id },
 }: FurbyCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { deleteFurby } = useFurbysApi();
+  const navigate = useNavigate();
+  const { deleteFurby, loadSelectedFurby } = useFurbysApi();
 
-  const deleteFurbyApi = (): void => {
-    deleteFurby(_id);
+  const deleteFurbyApi = async (): Promise<void> => {
+    await deleteFurby(_id);
+
     dispatch(deleteFurbyActionCreator(_id));
+  };
+
+  const modifyCurrentFurby = async () => {
+    const selectedFurby = await loadSelectedFurby(_id);
+
+    dispatch(loadSelectedFurbyActionCreator(selectedFurby!));
+
+    navigate(`/my-furbys/${_id}/modify`);
   };
 
   return (
@@ -47,12 +60,12 @@ const FurbyCard = ({
           <dd className="furby-card__info">{year}</dd>
         </div>
         <div className="furby-card__details">
-          <dt className="furby-card__title-info">Price:</dt>
-          <dd className="furby-card__info">{price}</dd>
+          <dt className="furby-card__title-info">Generation:</dt>
+          <dd className="furby-card__info">{generation}</dd>
         </div>
       </dl>
       <div className="furby-card__button-container">
-        <Button text="Modify" />
+        <Button actionOnClick={modifyCurrentFurby} text="Modify" />
         <Button actionOnClick={deleteFurbyApi} text="Delete" />
       </div>
     </FurbyCardStyled>

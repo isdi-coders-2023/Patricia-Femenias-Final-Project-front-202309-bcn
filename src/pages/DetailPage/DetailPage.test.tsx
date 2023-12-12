@@ -1,6 +1,10 @@
 import { screen } from "@testing-library/react";
-import { customRender } from "../../testsUtils/wrappers";
+import {
+  customRender,
+  customRenderWithoutRouter,
+} from "../../testsUtils/wrappers";
 import DetailPage from "./DetailPage";
+import { MemoryRouter } from "react-router-dom";
 
 describe("Given a DetailPage component", () => {
   describe("When it is rendered", () => {
@@ -17,8 +21,11 @@ describe("Given a DetailPage component", () => {
     test("Then it should show a button to delete the selected Furby", () => {
       const expectedButtonText = "Delete";
 
-      customRender(<DetailPage />);
-
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={["/"]}>
+          <DetailPage />
+        </MemoryRouter>,
+      );
       const buttonText = screen.getByRole("button", {
         name: expectedButtonText,
       });
@@ -30,7 +37,6 @@ describe("Given a DetailPage component", () => {
       const expectedButtonText = "Modify";
 
       customRender(<DetailPage />);
-
       const buttonText = screen.getByRole("button", {
         name: expectedButtonText,
       });

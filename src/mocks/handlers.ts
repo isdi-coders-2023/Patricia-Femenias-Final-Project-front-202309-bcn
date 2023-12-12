@@ -4,7 +4,7 @@ import newFurbysList from "./newFurbysList";
 
 const handlers = [
   http.get(`${import.meta.env.VITE_API_URL}/furbys`, () => {
-    return HttpResponse.json(furbysApiMock);
+    return HttpResponse.json({ furbys: furbysApiMock });
   }),
   http.delete(
     `${import.meta.env.VITE_API_URL}/furbys/6564a27d66ed505ce77a67d3`,
@@ -19,6 +19,12 @@ const handlers = [
     `${import.meta.env.VITE_API_URL}/furbys/6564a27d66ed505ce77a67d4`,
     () => {
       return HttpResponse.json({ furby: newFurbysList[1] });
+    },
+  ),
+  http.patch(
+    `${import.meta.env.VITE_API_URL}/furbys/6564a27d66ed505ce77a67d3`,
+    () => {
+      return HttpResponse.json({ furby: newFurbysList[0] });
     },
   ),
 ];
