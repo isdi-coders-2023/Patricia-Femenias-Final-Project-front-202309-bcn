@@ -10,6 +10,7 @@ import newFurbysList from "../mocks/newFurbysList";
 import { errorHandlers } from "../mocks/errorHandlers";
 import server from "../mocks/node";
 import App from "../components/App/App";
+import modifiedFurbyList from "../mocks/modifiedFurbyList";
 
 describe("Given a useFurbysApi custom hook", () => {
   describe("When it gets the information of two Furbys", () => {
@@ -24,7 +25,7 @@ describe("Given a useFurbysApi custom hook", () => {
 
       const currentFurbys = await getFurbysApi();
 
-      expect(currentFurbys).toStrictEqual(expectedFurbys);
+      expect(currentFurbys).toStrictEqual({ furbys: expectedFurbys });
     });
   });
 
@@ -123,6 +124,60 @@ describe("Given a useFurbysApi custom hook", () => {
       } = renderHook(() => useFurbysApi(), { wrapper: providerWrapper });
 
       await loadSelectedFurby(expectedFurbyId);
+
+      const errorMessage = await screen.findByText(expectedErrorMessage);
+
+      expect(errorMessage).toBeInTheDocument();
+    });
+  });
+
+  describe("When it is called with its modifyFurby method with a Peachy Furby", () => {
+    test("Then it should show the feedback message 'Great! Your Furby has been modified'", async () => {
+      const expectedFeedbackMessage = "Great! Your Furby has been modified";
+
+      customRenderWithoutRouter(
+        <MemoryRouter
+          initialEntries={["/furbys/6564a27d66ed505ce77a67d4/modify"]}
+        >
+          <App />
+        </MemoryRouter>,
+      );
+
+      const {
+        result: {
+          current: { modifyFurby },
+        },
+      } = renderHook(() => useFurbysApi(), { wrapper: providerWrapper });
+
+      await modifyFurby(modifiedFurbyList[0], furbysApiMock[0]._id);
+      const feedbackMessage = await screen.findByText(expectedFeedbackMessage);
+
+      expect(feedbackMessage).toBeInTheDocument();
+    });
+  });
+
+  describe("When it is called with ist modifyFurby method with a Peachy Furby but the response fails", () => {
+    test("Then it should show the error message 'Sorry! We couldn't modify your Furby'", async () => {
+      server.use(...errorHandlers);
+
+      const expectedFurbyId = modifiedFurbyList[0]._id;
+      const expectedErrorMessage = "Sorry! We couldn't modify your Furby";
+
+      customRenderWithoutRouter(
+        <MemoryRouter
+          initialEntries={["/furbys/6564a27d66ed505ce77a67d3/modify"]}
+        >
+          <App />
+        </MemoryRouter>,
+      );
+
+      const {
+        result: {
+          current: { modifyFurby },
+        },
+      } = renderHook(() => useFurbysApi(), { wrapper: providerWrapper });
+
+      await modifyFurby(modifiedFurbyList[0], expectedFurbyId);
 
       const errorMessage = await screen.findByText(expectedErrorMessage);
 

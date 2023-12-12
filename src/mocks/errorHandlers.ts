@@ -9,4 +9,7 @@ export const errorHandlers = [
   http.get(`${apiURL}/furbys/6564a27d66ed505ce77a67d4`, () =>
     HttpResponse.error(),
   ),
+  http.patch(`${apiURL}/furbys/6564a27d66ed505ce77a67d3`, () =>
+    HttpResponse.error(),
+  ),
 ];
