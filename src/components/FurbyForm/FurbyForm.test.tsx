@@ -10,7 +10,9 @@ describe("Given a FurbyForm component", () => {
     test("Then it should show a'Name:' label text", () => {
       const expectedLabelText = "Name:";
 
-      customRender(<FurbyForm submitAction={actionOnClick} />);
+      customRender(
+        <FurbyForm submitAction={actionOnClick} buttonText="Create" />,
+      );
 
       const labelText = screen.getByLabelText(expectedLabelText);
 
@@ -22,7 +24,9 @@ describe("Given a FurbyForm component", () => {
     test("Then it should show a button with the text 'Create'", () => {
       const expectedButtonText = "Create";
 
-      customRender(<FurbyForm submitAction={actionOnClick} />);
+      customRender(
+        <FurbyForm submitAction={actionOnClick} buttonText="Create" />,
+      );
       const buttonText = screen.getByRole("button", {
         name: expectedButtonText,
       });
@@ -35,7 +39,9 @@ describe("Given a FurbyForm component", () => {
     test("Then it should show the writen text in all these fields", async () => {
       const expectedInputText = "Peachy";
 
-      customRender(<FurbyForm submitAction={actionOnClick} />);
+      customRender(
+        <FurbyForm submitAction={actionOnClick} buttonText="Create" />,
+      );
 
       const labelText = screen.getByLabelText("Name:");
 
@@ -49,7 +55,7 @@ describe("Given a FurbyForm component", () => {
 
   describe("When user clicks on the button to create a new Furby", () => {
     test("Then it should call its onSubmit action", () => {
-      customRender(<FurbyForm submitAction={actionOnClick} />);
+      customRender(<FurbyForm submitAction={actionOnClick} buttonText="" />);
 
       const furbyForm = screen.getByLabelText("Name:");
       fireEvent.submit(furbyForm);
@@ -64,7 +70,9 @@ describe("Given a FurbyForm component", () => {
       const expectedInputNumber = 7;
       const ecxpectedButtonText = "Create";
 
-      customRender(<FurbyForm submitAction={actionOnClick} />);
+      customRender(
+        <FurbyForm submitAction={actionOnClick} buttonText="Create" />,
+      );
 
       const inputFurbyElement = screen.getByLabelText("Name:");
       await userEvent.type(inputFurbyElement, expectedInputText);
