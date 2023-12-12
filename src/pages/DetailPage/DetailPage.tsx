@@ -46,7 +46,7 @@ const DetailPage = (): React.ReactElement => {
     dispatch(deleteFurbyActionCreator(_id));
 
     navigate("/");
-    scrollTo;
+    scrollTo(0, 0);
   };
 
   return (
