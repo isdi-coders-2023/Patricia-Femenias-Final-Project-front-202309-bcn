@@ -8,6 +8,7 @@ describe("Given a furbySlice with a loadSelectedFurby minireducer", () => {
       const initialState: FurbyStateStructure = {
         furbys: newFurbysList,
         selectedFurby: {} as FurbyStructure,
+        currentFurby: {} as FurbyStructure,
       };
       const selectedFurby: FurbyStructure = newFurbysList[1];
 

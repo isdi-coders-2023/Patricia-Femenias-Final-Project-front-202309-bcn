@@ -9,6 +9,7 @@ describe("Given a furbysReducer", () => {
       const currentListState: FurbyStateStructure = {
         furbys: [],
         selectedFurby: {} as FurbyStructure,
+        currentFurby: {} as FurbyStructure,
       };
 
       const newListState = furbysReducer(

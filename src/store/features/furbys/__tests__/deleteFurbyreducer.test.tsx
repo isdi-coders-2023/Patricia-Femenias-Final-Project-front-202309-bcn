@@ -8,6 +8,7 @@ describe("Given a furbySlice with a deleteFurby minireducer", () => {
       const initialState: FurbyStateStructure = {
         furbys: furbysApiMock,
         selectedFurby: {} as FurbyStructure,
+        currentFurby: {} as FurbyStructure,
       };
       const expectedDeletedFurby = "Peachy";
 

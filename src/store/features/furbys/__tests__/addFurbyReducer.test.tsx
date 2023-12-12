@@ -9,6 +9,7 @@ describe("Given an addFurby minireducer", () => {
       const initialState: FurbyStateStructure = {
         furbys: furbysApiMock,
         selectedFurby: {} as FurbyStructure,
+        currentFurby: {} as FurbyStructure,
       };
       const newFurby: FurbyStructure = newFurbysList[2];
 
