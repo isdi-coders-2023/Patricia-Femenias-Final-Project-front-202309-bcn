@@ -18,8 +18,12 @@ const NavigationStyled = styled.nav`
     border-radius: 5px;
   }
 
-  .active {
+  .active-navbar {
     font-weight: bold;
+  }
+
+  .non-active-navbar {
+    font-weight: normal;
   }
 `;
 
