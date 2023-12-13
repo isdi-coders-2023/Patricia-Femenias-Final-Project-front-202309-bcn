@@ -61,10 +61,7 @@ The version control for the application was handled through GIT, adopting a CI/C
 <a href="https://www.figma.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/figma-icon.svg" alt="Figma" height="50" /></a>  
 <a href="https://nodejs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" alt="Node.js" height="50" /></a>  
 <a href="https://reactrouter.com/en/main" target="_blank"><img style="margin: 10px" src="https://reactrouter.com/_brand/react-router-mark-color.png" alt="react-router-dom" height="50" /></a>  
-<a href="https://reactrouter.com/en/main" target="_blank"><img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Axios_%28computer_library%29_logo.svg/1280px-Axios_%28computer_library%29_logo.svg.png" alt="Axios" height="20" /></a>  
-<a href="https://docs.mongodb.com/" target="_blank">
-  <img style="margin: 10px" src="https://javguerra.github.io/assets/img/mongodb.png" alt="MongoDB" height="70" />
-</a>
+<a href="https://reactrouter.com/en/main" target="_blank"><img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Axios_%28computer_library%29_logo.svg/1280px-Axios_%28computer_library%29_logo.svg.png" alt="Axios" height="20" /></a>
 
 </div>
 
