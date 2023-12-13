@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/hooks";
 import useFurbysApi from "../../hooks/useFurbysApi.tsx";
 import {
@@ -36,7 +36,7 @@ const FurbyCard = ({
 
   return (
     <FurbyCardStyled>
-      <Link to={`/my-furbys/${_id}`}>
+      <NavLink to={`/my-furbys/${_id}`}>
         <img
           className="furby-card__image"
           src={imageUrl}
@@ -44,7 +44,7 @@ const FurbyCard = ({
           width="300"
           height="300"
         />
-      </Link>
+      </NavLink>
       <div className="furby-card__name-container">
         <span>♥</span>
         <h2 className="furby-card__name">{name}</h2>

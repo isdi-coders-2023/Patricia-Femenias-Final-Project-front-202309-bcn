@@ -108,7 +108,7 @@ const FurbyForm = ({
         </label>
         <input
           className="form__input"
-          type="text"
+          type="number"
           id="generation"
           value={newFurby.generation}
           onChange={onChangeEditFurby}
@@ -150,6 +150,7 @@ const FurbyForm = ({
           id="howFoundIt"
           value={newFurby.howFoundIt}
           onChange={onChangeEditFurby}
+          rows={10}
           required
         />
       </div>
