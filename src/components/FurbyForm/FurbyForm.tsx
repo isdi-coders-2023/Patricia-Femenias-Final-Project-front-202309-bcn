@@ -35,6 +35,12 @@ const FurbyForm = ({
   const [newFurby, setNewFurby] = useState<FurbyWithoutId>(emptyFurby);
 
   useEffect(() => {
+    if (selectedFurby) {
+      setNewFurby({ ...selectedFurby });
+    }
+  }, [selectedFurby]);
+
+  useEffect(() => {
     Object.values(newFurby).every((field) => field !== "");
   }, [newFurby]);
 

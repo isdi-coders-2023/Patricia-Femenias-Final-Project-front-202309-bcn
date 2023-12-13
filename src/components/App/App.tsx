@@ -22,7 +22,7 @@ const App = (): React.ReactElement => {
         <Route path="/my-furbys" element={<MyFurbysPage />} />
         <Route path="/create" element={<CreatePage />} />
         <Route path="/my-furbys/:furbyId" element={<DetailPage />} />
-        <Route path="my-furbys/:furbyId/modify" element={<ModifyPage />} />
+        <Route path="/my-furbys/:furbyId/modify" element={<ModifyPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
       {uiState.isLoading && <Loading />}
