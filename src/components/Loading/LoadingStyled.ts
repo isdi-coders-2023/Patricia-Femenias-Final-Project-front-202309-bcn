@@ -96,7 +96,6 @@ const LoadingStyled = styled.div`
   }
 
   @media (prefers-reduced-motion) {
-    .loading,
     .rhombus2,
     .circle21,
     .circle22 {
