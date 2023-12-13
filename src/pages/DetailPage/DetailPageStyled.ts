@@ -18,7 +18,7 @@ const DetailPageStyled = styled.main`
   box-shadow: 0 0 25px ${({ theme }) => theme.colors.main};
   font-size: 1rem;
 
-  .furby-card {
+  .furby-details {
     &__name-container {
       display: flex;
       align-items: center;
