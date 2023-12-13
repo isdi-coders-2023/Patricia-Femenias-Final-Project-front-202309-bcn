@@ -6,7 +6,7 @@ const Header = (): React.ReactElement => {
     <HeaderStyled>
       <img
         className="header-logo"
-        src="/images/logo.webp"
+        src="/images/logo.svg"
         alt="My 90s Furby collection logo"
         width="350"
         height="350"
