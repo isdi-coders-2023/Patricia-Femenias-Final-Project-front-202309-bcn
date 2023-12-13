@@ -56,44 +56,44 @@ const DetailPage = (): React.ReactElement => {
       </PageStyled>
       <DetailPageStyled>
         <img
-          className="furby-card__image"
+          className="furby-details__image"
           src={imageUrl}
           alt={name}
           width="300"
           height="300"
         />
-        <div className="furby-card__name-container">
+        <div className="furby-details__name-container">
           <span>♥</span>
-          <h2 className="furby-card__name">{name}</h2>
+          <h2 className="furby-details__name">{name}</h2>
           <span>♥</span>
         </div>
-        <dl className="furby-card__info-container">
-          <div className="furby-card__details">
-            <dt className="furby-card__title-info">Type:</dt>
-            <dd className="furby-card__info">{type}</dd>
+        <dl className="furby-details__info-container">
+          <div className="furby-details__details">
+            <dt className="furby-details__title-info">Type:</dt>
+            <dd className="furby-details__info">{type}</dd>
           </div>
-          <div className="furby-card__details">
-            <dt className="furby-card__title-info">Year:</dt>
-            <dd className="furby-card__info">{year}</dd>
+          <div className="furby-details__details">
+            <dt className="furby-details__title-info">Year:</dt>
+            <dd className="furby-details__info">{year}</dd>
           </div>
-          <div className="furby-card__details">
-            <dt className="furby-card__title-info">Generation:</dt>
-            <dd className="furby-card__info">{generation}</dd>
+          <div className="furby-details__details">
+            <dt className="furby-details__title-info">Generation:</dt>
+            <dd className="furby-details__info">{generation}</dd>
           </div>
-          <div className="furby-card__details">
-            <dt className="furby-card__title-info">Language:</dt>
-            <dd className="furby-card__info">{language}</dd>
+          <div className="furby-details__details">
+            <dt className="furby-details__title-info">Language:</dt>
+            <dd className="furby-details__info">{language}</dd>
           </div>
-          <div className="furby-card__details">
-            <dt className="furby-card__title-info">Price:</dt>
-            <dd className="furby-card__info">{price}</dd>
+          <div className="furby-details__details">
+            <dt className="furby-details__title-info">Price:</dt>
+            <dd className="furby-details__info">{price}</dd>
           </div>
-          <div className="furby-card__textarea-container">
-            <dt className="furby-card__title-info">How did you find it?</dt>
-            <dd className="furby-card__textarea">{howFoundIt}</dd>
+          <div className="furby-details__textarea-container">
+            <dt className="furby-details__title-info">How did you find it?</dt>
+            <dd className="furby-details__textarea">{howFoundIt}</dd>
           </div>
         </dl>
-        <div className="furby-card__button-container">
+        <div className="furby-details__button-container">
           <Button
             text="Modify"
             actionOnClick={() => {
